@@ -1,15 +1,12 @@
 "use client";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import CustomCursor from "./CustomCursor";
-import { Button } from "@heroui/react";
-import Lottie, { LottieRefCurrentProps } from "lottie-react";
-import confettiAnimation from "@/assets/confetti.json";
+import { LottieRefCurrentProps } from "lottie-react";
 
 export default function PageContainer({ children }: { children: ReactNode }) {
   const targetRef = useRef<HTMLDivElement>(null);
   const lottieRef = useRef<LottieRefCurrentProps>(null);
   const [mousePosition, setMousePosition] = useState({ x: -1000, y: -1000 });
-  const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
     const target = targetRef.current;
@@ -28,16 +25,6 @@ export default function PageContainer({ children }: { children: ReactNode }) {
       target.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
-
-  const handleButtonClick = () => {
-    setShowConfetti(true);
-    lottieRef.current?.goToAndPlay(0);
-
-    // Cache l'animation après qu'elle soit terminée
-    setTimeout(() => {
-      setShowConfetti(false);
-    }, 7000); // Ajuste selon la durée de ton animation
-  };
 
   return (
     <>
@@ -64,26 +51,6 @@ export default function PageContainer({ children }: { children: ReactNode }) {
           )`,
           }}
         />
-
-        <Button
-          onClick={handleButtonClick}
-          className="bg-background text-transparent hover:text-foreground"
-        >
-          Bouton Caché :p
-        </Button>
-
-        {showConfetti && (
-          <div className="fixed inset-0 pointer-events-none z-0">
-            <Lottie
-              lottieRef={lottieRef}
-              animationData={confettiAnimation}
-              loop={false}
-              autoplay={true}
-              style={{ width: "100%", height: "100%" }}
-            />
-          </div>
-        )}
-
         {/* Contenu principal */}
         <div className="w-full md:max-w-7xl lg:mx-auto min-h-screen h-full relative z-10">
           {children}
