@@ -13,6 +13,8 @@
   /* Theme Colors (Light Mode) */
   --accent: oklch(62.04% 0.195 169.52);
   --accent-foreground: oklch(99.11% 0 0);
+  --secondary: #d6c2f6;
+  --secondary-foreground: oklch(99.11% 0 0);
   --background: #f7f7f8;
   --border: oklch(90% 0.0015 169.52);
   --danger: oklch(65.32% 0.2335 15.62);

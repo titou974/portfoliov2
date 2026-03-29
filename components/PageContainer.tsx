@@ -1,12 +1,16 @@
 "use client";
 import { ReactNode, useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import CustomCursor from "./CustomCursor";
-import { LottieRefCurrentProps } from "lottie-react";
+
+const SCROLL_FADE_RANGE = [0, 500] as const;
 
 export default function PageContainer({ children }: { children: ReactNode }) {
   const targetRef = useRef<HTMLDivElement>(null);
-  const lottieRef = useRef<LottieRefCurrentProps>(null);
   const [mousePosition, setMousePosition] = useState({ x: -1000, y: -1000 });
+
+  const { scrollY } = useScroll();
+  const gradientOpacity = useTransform(scrollY, [...SCROLL_FADE_RANGE], [1, 0]);
 
   useEffect(() => {
     const target = targetRef.current;
@@ -29,11 +33,11 @@ export default function PageContainer({ children }: { children: ReactNode }) {
   return (
     <>
       <div className="hidden lg:block">
-        <CustomCursor />
+        <CustomCursor scrollY={scrollY} />
       </div>
       <div
         ref={targetRef}
-        className="lg:cursor-none"
+        className="lg:cursor-none overflow-hidden"
         style={
           {
             "--mouse-x": `${mousePosition.x}px`,
@@ -41,9 +45,10 @@ export default function PageContainer({ children }: { children: ReactNode }) {
           } as React.CSSProperties
         }
       >
-        <div
+        <motion.div
           className="absolute inset-0 pointer-events-none hidden lg:block"
           style={{
+            opacity: gradientOpacity,
             backgroundImage: `radial-gradient(
             200px circle at var(--mouse-x) var(--mouse-y),
             var(--color-accent) 0,
