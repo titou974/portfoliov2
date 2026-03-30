@@ -1,54 +1,66 @@
 "use client";
-import { ReactNode, useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+
+import { ReactNode, useEffect, useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValue,
+  animate,
+} from "framer-motion";
 import CustomCursor from "./CustomCursor";
+import { useMouse } from "@/lib/MouseContext";
 
 const SCROLL_FADE_RANGE = [0, 500] as const;
 
 export default function PageContainer({ children }: { children: ReactNode }) {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: -1000, y: -1000 });
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollY } = useScroll();
-  const gradientOpacity = useTransform(scrollY, [...SCROLL_FADE_RANGE], [1, 0]);
+  const scrollOpacity = useTransform(scrollY, [...SCROLL_FADE_RANGE], [1, 0]);
+
+  // Mouse presence: 0 = outside, 1 = inside (animated via spring)
+  const presence = useMotionValue(0);
+  const combinedOpacity = useTransform(
+    [scrollOpacity, presence],
+    ([s, p]: number[]) => s * p,
+  );
+
+  const { subscribe } = useMouse();
 
   useEffect(() => {
-    const target = targetRef.current;
-    if (!target) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = target.getBoundingClientRect();
-      setMousePosition({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      });
-    };
+    const onEnter = () => animate(presence, 1, { duration: 0.35, ease: "easeOut" });
+    const onLeave = () => animate(presence, 0, { duration: 0.3, ease: "easeIn" });
 
-    target.addEventListener("mousemove", handleMouseMove);
+    container.addEventListener("mouseenter", onEnter, { passive: true });
+    container.addEventListener("mouseleave", onLeave, { passive: true });
+
+    const unsub = subscribe((clientX, clientY) => {
+      const rect = container.getBoundingClientRect();
+      container.style.setProperty("--mouse-x", `${clientX - rect.left}px`);
+      container.style.setProperty("--mouse-y", `${clientY - rect.top}px`);
+    });
+
     return () => {
-      target.removeEventListener("mousemove", handleMouseMove);
+      container.removeEventListener("mouseenter", onEnter);
+      container.removeEventListener("mouseleave", onLeave);
+      unsub();
     };
-  }, []);
+  }, [subscribe, presence]);
 
   return (
     <>
       <div className="hidden lg:block">
         <CustomCursor scrollY={scrollY} />
       </div>
-      <div
-        ref={targetRef}
-        className="lg:cursor-none overflow-hidden"
-        style={
-          {
-            "--mouse-x": `${mousePosition.x}px`,
-            "--mouse-y": `${mousePosition.y}px`,
-          } as React.CSSProperties
-        }
-      >
+      <div ref={containerRef} className="lg:cursor-none overflow-hidden">
         <motion.div
           className="absolute inset-0 pointer-events-none hidden lg:block"
           style={{
-            opacity: gradientOpacity,
+            opacity: combinedOpacity,
             backgroundImage: `radial-gradient(
             200px circle at var(--mouse-x) var(--mouse-y),
             var(--color-accent) 0,
@@ -56,7 +68,6 @@ export default function PageContainer({ children }: { children: ReactNode }) {
           )`,
           }}
         />
-        {/* Contenu principal */}
         <div className="w-full md:max-w-7xl lg:mx-auto min-h-screen h-full relative z-10">
           {children}
         </div>

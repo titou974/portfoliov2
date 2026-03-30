@@ -125,7 +125,7 @@ export function PhotoGallery({ onPlantReady }: PhotoGalleryProps) {
             onMouseLeave={handleMouseLeave}
             className="w-[40%] md:w-[20%] md:cursor-none"
           >
-            <Tooltip.Trigger>
+            <Tooltip.Trigger className="md:cursor-none">
               <Lottie
                 lottieRef={lottieRef}
                 animationData={plantAnimation}

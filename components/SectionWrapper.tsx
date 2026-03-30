@@ -19,7 +19,7 @@ export default function SectionWrapper({
   const inView = useInView(titleRef, { once: true, margin: "-40px" });
 
   return (
-    <section className="mt-24 md:mt-32 md:px-6 pb-10 md:pb-16">
+    <section className="mt-24 md:px-6 pb-10">
       <motion.div
         ref={titleRef}
         className="relative mb-10 text-center md:mb-16"

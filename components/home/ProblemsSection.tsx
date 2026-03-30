@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   motion,
   useScroll,
@@ -9,7 +9,7 @@ import {
   type MotionValue,
 } from "framer-motion";
 import Image from "next/image";
-import Lottie from "lottie-react";
+import Lottie, { type LottieRefCurrentProps } from "lottie-react";
 import orbe from "../../assets/orbe.json";
 import { ArrowUpRightIcon } from "@heroicons/react/16/solid";
 
@@ -158,11 +158,13 @@ function DesktopCard({
   delay,
   inView,
   index,
+  onHover,
 }: {
   problem: (typeof problems)[number];
   delay: number;
   inView: boolean;
   index: number;
+  onHover: (hovered: boolean) => void;
 }) {
   return (
     <motion.div
@@ -170,17 +172,9 @@ function DesktopCard({
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      onHoverStart={() => onHover(true)}
+      onHoverEnd={() => onHover(false)}
     >
-      {/* Connecting line to center Lottie */}
-      <div
-        className={`pointer-events-none absolute h-px w-20 lg:w-52 ${LINE_CONFIGS[index]}`}
-      >
-        {/* Base (border color) */}
-        <div className="absolute inset-0 bg-inherit from-[var(--border)] to-transparent group-hover:opacity-0 transition-opacity duration-300" />
-        {/* Accent (on hover) */}
-        <div className="absolute inset-0 bg-inherit from-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </div>
-
       {/* Border pulse on entry */}
       <motion.div
         className="pointer-events-none absolute inset-0 rounded-xl border-2 border-accent/40"
@@ -235,6 +229,19 @@ export default function ProblemsSection() {
   const desktopRef = useRef<HTMLDivElement>(null);
   const desktopInView = useInView(desktopRef, { once: true, margin: "-80px" });
 
+  // Lottie: play only when hovering a card
+  const lottieRef = useRef<LottieRefCurrentProps>(null);
+  const [cardHovered, setCardHovered] = useState(false);
+
+  const handleCardHover = (hovered: boolean) => {
+    setCardHovered(hovered);
+    if (hovered) {
+      lottieRef.current?.play();
+    } else {
+      lottieRef.current?.pause();
+    }
+  };
+
   // Mobile: avatar follows the connecting line
   const avatarTop = useTransform(scrollYProgress, [0, 1], ["2%", "95%"]);
   const avatarOpacity = useTransform(scrollYProgress, [0, 0.03], [0, 1]);
@@ -269,7 +276,12 @@ export default function ProblemsSection() {
       <div ref={desktopRef} className="relative hidden md:block">
         {/* Lottie at center */}
         <div className="pointer-events-none absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
-          <Lottie animationData={orbe} className="w-24 h-24 xl:w-36 xl:h-36" />
+          <Lottie
+            lottieRef={lottieRef}
+            animationData={orbe}
+            autoplay={false}
+            className="w-24 h-24 xl:w-36 xl:h-36"
+          />
         </div>
 
         {/* 2×2 card grid */}
@@ -280,12 +292,14 @@ export default function ProblemsSection() {
               delay={0.15}
               inView={desktopInView}
               index={0}
+              onHover={handleCardHover}
             />
             <DesktopCard
               problem={problems[2]}
               delay={0.45}
               inView={desktopInView}
               index={2}
+              onHover={handleCardHover}
             />
           </div>
           <div className="flex flex-col gap-10 lg:gap-12">
@@ -294,12 +308,14 @@ export default function ProblemsSection() {
               delay={0.3}
               inView={desktopInView}
               index={1}
+              onHover={handleCardHover}
             />
             <DesktopCard
               problem={problems[3]}
               delay={0.6}
               inView={desktopInView}
               index={3}
+              onHover={handleCardHover}
             />
           </div>
         </div>
