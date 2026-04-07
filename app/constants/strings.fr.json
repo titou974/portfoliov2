@@ -1,0 +1,217 @@
+{
+  "bio": {
+    "share": "Partager",
+    "username": "@bobodigital_",
+    "tagline": "je code ce que l'IA ne code pas",
+    "footer": "bobodigital",
+    "stats": {
+      "instagramLabel": "Abonnés Instagram",
+      "tiktokLabel": "Abonnés TikTok",
+      "projectsLabel": "Projets digitaux",
+      "projectsValue": "10+"
+    },
+    "contact": {
+      "title": "Réserver un RDV",
+      "subtitle": "Discutons de votre projet",
+      "badge": "Répond sous 24h"
+    },
+    "sections": {
+      "activities": "Activités",
+      "videos": "Vidéos"
+    },
+    "activities": {
+      "projects": {
+        "title": "Découvrez mes projets",
+        "subtitle": "Applications, sites & MVPs"
+      },
+      "portfolio": {
+        "title": "Mon portfolio",
+        "subtitle": "Tout mon travail en un coup d'oeil"
+      }
+    },
+    "socials": {
+      "instagram": {
+        "title": "Instagram",
+        "subtitle": "@bobodigital_"
+      },
+      "tiktok": {
+        "title": "TikTok",
+        "subtitle": "@bobodigital_"
+      },
+      "youtube": {
+        "title": "YouTube",
+        "subtitle": "bobodigital"
+      },
+      "linkedin": {
+        "title": "LinkedIn",
+        "subtitle": "Titouan Hirsch"
+      }
+    }
+  },
+  "navbar": {
+    "accueil": "Accueil",
+    "projets": "Projets",
+    "videos": "Vidéos",
+    "contact": "Contactez-moi"
+  },
+  "hero": {
+    "greeting": "Bienvenue ! Je suis Titouan/@bobodigital.",
+    "givesLife": "Je donne vie à votre",
+    "helpsGrow": "l'aide à Grandir.",
+    "andI": "et je",
+    "tooltip": "Salut !",
+    "ctaPrimary": "Réserver un appel",
+    "ctaSecondary": "Découvrir mes activités",
+    "plantTooltip": "Voici ma jolie petite plante",
+    "typewriter": [
+      "Application,",
+      "Site Web,",
+      "MVP,",
+      "Design,",
+      "Parcours utilisateur,",
+      "Automatisation,",
+      "Agent IA,",
+      "Projet tech,"
+    ]
+  },
+  "sections": {
+    "problems": {
+      "title": "Je crée ce que l'IA ne peut pas coder",
+      "subtitle": "Plus qu'un simple développeur, j'apporte une vision produit que seul l'humain peut concevoir."
+    },
+    "creations": {
+      "title": "Mes créations préférées",
+      "subtitle": "Des projets qui montrent ma capacité à créer des solutions uniques."
+    },
+    "videos": {
+      "title": "Je filme et j'enseigne à travers mes vidéos",
+      "subtitle": "Je construis une communauté de passionnés, et les aide à progresser."
+    },
+    "whyMe": {
+      "title": "Pourquoi me choisir comme développeur web ?",
+      "subtitle": "Mon approche personnalisée vs les solutions classiques du marché."
+    }
+  },
+  "problems": {
+    "mvp": {
+      "title": "Lancement MVP",
+      "subtitle": "Validez votre idée rapidement",
+      "description": "Développement express de votre MVP (max. 2 mois) pour tester votre marché et convaincre vos premiers utilisateurs."
+    },
+    "refonte": {
+      "title": "Refonte & Debug de votre app codé par l'IA",
+      "subtitle": "Reprenez le contrôle de votre app",
+      "description": "Votre app générée par IA bugge ou manque de solidité ? Je la restructure pour en faire un produit fiable et maintenable."
+    },
+    "agents": {
+      "title": "Agents IA sur-mesure",
+      "subtitle": "Automatisez ce qui vous ralentit",
+      "description": "Création d'agents intelligents qui prennent en charge vos tâches répétitives et boostent votre productivité."
+    },
+    "scalable": {
+      "title": "App Scalable",
+      "subtitle": "Construisez pour des millions",
+      "description": "Architecture robuste conçue pour supporter des centaines de milliers d'utilisateurs sans compromis sur la performance."
+    }
+  },
+  "creations": {
+    "projects": {
+      "kesselMedia": {
+        "name": "Kessel Media",
+        "testimonial": "Titou a transformé notre vision en une plateforme média performante et intuitive. Son approche technique et sa réactivité ont été remarquables du début à la fin.",
+        "author": "Kessel Media",
+        "role": "Plateforme média"
+      },
+      "pulseAI": {
+        "name": "PulseAI",
+        "testimonial": "L'intégration de l'IA dans notre app de nutrition est bluffante. Nos utilisateurs adorent l'expérience personnalisée, +40% d'engagement dès le lancement.",
+        "author": "PulseAI",
+        "role": "Coach nutrition IA"
+      },
+      "nestor": {
+        "name": "Nestor",
+        "testimonial": "De l'idée au store en 6 semaines. L'app de voiturier qu'il a développée tourne sans accroc depuis le premier jour.",
+        "author": "Nestor Valet",
+        "role": "App voiturier"
+      },
+      "bourbonAcademy": {
+        "name": "Bourbon Academy",
+        "testimonial": "La plateforme d'orientation a déjà aidé des centaines d'étudiants ultramarins à trouver leur voie. Un projet qui a du sens.",
+        "author": "Bourbon Academy",
+        "role": "Orientation scolaire"
+      },
+      "weDive": {
+        "name": "WeDive",
+        "testimonial": "WeDive est devenu la référence des spots de plongée à La Réunion. Titou a su capturer l'essence du projet dans chaque détail.",
+        "author": "WeDive",
+        "role": "Spots de plongée"
+      }
+    },
+    "viewProject": "Voir projet"
+  },
+  "whyMe": {
+    "premium": {
+      "badge": "Premium",
+      "title": "Construire avec le @bobodigital_",
+      "items": {
+        "partnership": {
+          "title": "La question du temps ?",
+          "description": "C'est souvent la première question — et elle est cruciale. Ma réponse : on définit ensemble la structure et les fonctionnalités de votre produit, puis je consacre une journée à cadrer la stack technique, les outils et le processus de développement, avec une liste de tâches et un temps estimé pour chacune."
+        },
+        "fullCode": {
+          "title": "On construit bien, et on teste votre marché rapidement",
+          "description": "Autant poser de bonnes bases dès le départ — ça économise du temps et de l'argent. Je construis les fondations avec mes connaissances, puis j'utilise l'IA entraînée sur les bonnes pratiques pour aller vite sans sacrifier la qualité. On valide votre marché : si ça marche, on continue ; sinon, on pivote."
+        },
+        "excellence": {
+          "title": "Un parcours utilisateur au cœur du projet",
+          "description": "Une fois les écrans et fonctionnalités définis ensemble, je construis des fondations solides et un design fonctionnel, en gardant l'objectif final en tête à chaque étape."
+        },
+        "marketing": {
+          "title": "Visibilité intégrée via le #BuildInPublic",
+          "description": "J'aide à acquérir vos premiers utilisateurs en donnant de la visibilité à votre projet sur mes réseaux, via des vidéos régulières qui dévoilent les coulisses de la construction — transparence et authenticité garanties."
+        },
+        "innovation": {
+          "title": "Innovation continue",
+          "description": "Le projet ne s'arrête pas à la livraison. Je reste dans une logique d'amélioration constante, en intégrant les retours utilisateurs et les évolutions techniques pour que votre produit reste pertinent."
+        }
+      }
+    },
+    "classic": {
+      "badge": "Standard",
+      "title": "Construire avec un développeur freelance ou une agence",
+      "items": {
+        "generic": {
+          "title": "La question du temps ?",
+          "description": "Les coûts initiaux semblent attractifs, mais les ajustements et extensions reviennent souvent bien plus cher que prévu. Et les délais annoncés ? Rarement tenus."
+        },
+        "templates": {
+          "title": "Dette technique",
+          "description": "Avec la mauvaise utilisation de l'IA, ce terme revient de plus en plus. Des solutions préfabriquées peuvent sembler rapides et bon marché, mais elles génèrent des problèmes de performance, de sécurité et de maintenabilité — et vous forcent à payer pour des corrections que vous n'aviez pas anticipées."
+        },
+        "standardDev": {
+          "title": "Un UI/UX négligé qui rend votre produit inutile",
+          "description": "Il y a beaucoup de développeurs, mais peu avec une vraie vision produit, forgée à la fois par l'expérience en marketing et en développement."
+        },
+        "secondaryMarketing": {
+          "title": "Marketing secondaire",
+          "description": "Le SEO et la conversion sont traités comme des options additionnelles, plutôt qu'intégrés dès la conception."
+        },
+        "limitedInnovation": {
+          "title": "Un parcours utilisateur laissé à l'abandon",
+          "description": "Les parcours utilisateurs sont souvent construits en parallèle du code, sans réelle attention à l'expérience. Résultat : un produit qui a coûté du temps et de l'argent, mais que personne n'utilise — et qu'il faudra reprendre de zéro."
+        }
+      }
+    }
+  },
+  "videos": {
+    "description": "Pendant que l'IA génère du code jetable, j'enseigne les fondamentaux qui font la différence entre un développeur et un prompt engineer.",
+    "viewPost": "Voir cette publication sur Instagram"
+  },
+  "booking": {
+    "title": "Réserver un créneau",
+    "description": "Discutons de votre projet autour d'un appel de 30 minutes, sans engagement.",
+    "cta": "Réserver un appel",
+    "calendarAlt": "Calendrier"
+  },
+  "secretButton": "Bouton Caché :p 🎉"
+}

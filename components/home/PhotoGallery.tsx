@@ -15,6 +15,7 @@ import {
 } from "@/lib/animation";
 import { HERO_PHOTOS } from "@/app/constants";
 import { Tooltip } from "@heroui/react";
+import { t } from "@/lib/strings";
 
 type PhotoGalleryProps = {
   onPlantReady?: () => void;
@@ -78,7 +79,7 @@ export function PhotoGallery({ onPlantReady }: PhotoGalleryProps) {
   };
 
   return (
-    <div className="relative flex h-fit w-full items-center justify-center mt-16">
+    <div className="relative flex h-fit w-full items-center justify-center mt-16 mb-24">
       {/* Photos */}
       <motion.div
         className="relative flex w-full max-w-6xl justify-center"
@@ -112,8 +113,6 @@ export function PhotoGallery({ onPlantReady }: PhotoGalleryProps) {
           </div>
         </motion.div>
       </motion.div>
-
-      {/* Plant Lottie — centered over the photos */}
       <motion.div
         className="pointer-events-auto absolute inset-0 z-50 max-h-fit flex items-end justify-center"
         {...fadeUp(HERO_DELAYS.PLANT)}
@@ -142,7 +141,7 @@ export function PhotoGallery({ onPlantReady }: PhotoGalleryProps) {
             </Tooltip.Trigger>
             <Tooltip.Content showArrow placement="right">
               <Tooltip.Arrow />
-              <p>Voici ma jolie petite plante</p>
+              <p>{t("hero.plantTooltip")}</p>
             </Tooltip.Content>
           </div>
         </Tooltip>

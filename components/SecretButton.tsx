@@ -3,6 +3,7 @@ import { Button } from "@heroui/react";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import { useRef, useState } from "react";
 import confettiAnimation from "@/assets/confetti.json";
+import { t } from "@/lib/strings";
 
 export default function SecretButton() {
   const lottieRef = useRef<LottieRefCurrentProps>(null);
@@ -11,10 +12,9 @@ export default function SecretButton() {
     setShowConfetti(true);
     lottieRef.current?.goToAndPlay(0);
 
-    // Cache l'animation après qu'elle soit terminée
     setTimeout(() => {
       setShowConfetti(false);
-    }, 7000); // Ajuste selon la durée de ton animation
+    }, 7000);
   };
   return (
     <>
@@ -31,9 +31,9 @@ export default function SecretButton() {
       )}
       <Button
         onClick={handleButtonClick}
-        className="bg-background text-transparent hover:text-foreground absolute top-2 left-2 z-10"
+        className="hidden md:block bg-background text-transparent hover:text-foreground absolute top-2 left-2 z-10"
       >
-        Bouton Caché :p 🎉
+        {t("secretButton")}
       </Button>
     </>
   );

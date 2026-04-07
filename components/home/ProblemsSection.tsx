@@ -12,35 +12,32 @@ import Image from "next/image";
 import Lottie, { type LottieRefCurrentProps } from "lottie-react";
 import orbe from "../../assets/orbe.json";
 import { ArrowUpRightIcon } from "@heroicons/react/16/solid";
+import strings from "@/app/constants/strings.fr.json";
 
 const problems = [
   {
     icon: "/icons/mvp.png",
-    title: "Lancement MVP",
-    subtitle: "Validez votre idée rapidement",
-    description:
-      "Développement express de votre MVP (max. 2 mois) pour tester votre marché et convaincre vos premiers utilisateurs.",
+    title: strings.problems.mvp.title,
+    subtitle: strings.problems.mvp.subtitle,
+    description: strings.problems.mvp.description,
   },
   {
     icon: "/icons/build.png",
-    title: "Refonte & Debug de votre app codé par l'IA",
-    subtitle: "Reprenez le contrôle de votre app",
-    description:
-      "Votre app générée par IA bugge ou manque de solidité ? Je la restructure pour en faire un produit fiable et maintenable.",
+    title: strings.problems.refonte.title,
+    subtitle: strings.problems.refonte.subtitle,
+    description: strings.problems.refonte.description,
   },
   {
     icon: "/icons/ia-avatar.webp",
-    title: "Agents IA sur-mesure",
-    subtitle: "Automatisez ce qui vous ralentit",
-    description:
-      "Création d'agents intelligents qui prennent en charge vos tâches répétitives et boostent votre productivité.",
+    title: strings.problems.agents.title,
+    subtitle: strings.problems.agents.subtitle,
+    description: strings.problems.agents.description,
   },
   {
     icon: "/icons/thunderbolt.webp",
-    title: "App Scalable",
-    subtitle: "Construisez pour des millions",
-    description:
-      "Architecture robuste conçue pour supporter des centaines de milliers d'utilisateurs sans compromis sur la performance.",
+    title: strings.problems.scalable.title,
+    subtitle: strings.problems.scalable.subtitle,
+    description: strings.problems.scalable.description,
   },
 ];
 
@@ -71,7 +68,7 @@ function MobileCard({
   // Connector line fill between cards
   const lineProgress = useTransform(
     scrollYProgress,
-    [activationEnd, activationEnd + segment * 0.35],
+    [activationEnd, activationEnd + segment * 0.65],
     [0, 1],
   );
 
@@ -79,12 +76,7 @@ function MobileCard({
     <>
       <div className="relative z-[2]">
         {/* Base card */}
-        <div className="rounded-xl border border-neutral bg-[var(--background)] p-5">
-          {/* Arrow button top-right */}
-          <div className="absolute top-4 right-4 bg-accent/20 text-accent rounded-full p-2">
-            <ArrowUpRightIcon className="size-5" />
-          </div>
-
+        <div className="rounded-xl border border-neutral bg-surface p-5">
           {/* Icon with accent overlay + circle bg transition */}
           <span className="relative inline-flex items-center justify-center rounded-full w-10 h-10">
             <span className="absolute inset-0 rounded-full bg-muted/20" />
@@ -168,26 +160,19 @@ function DesktopCard({
 }) {
   return (
     <motion.div
-      className="relative z-[1] overflow-visible rounded-xl border border-neutral bg-[var(--background)] p-6 group h-full"
+      className="relative z-[1] overflow-visible rounded-xl border border-neutral bg-surface p-6 group h-full"
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
       onHoverStart={() => onHover(true)}
       onHoverEnd={() => onHover(false)}
     >
-      {/* Border pulse on entry */}
       <motion.div
         className="pointer-events-none absolute inset-0 rounded-xl border-2 border-accent/40"
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: [0, 0.7, 0] } : {}}
         transition={{ duration: 1.8, delay: delay + 1.2, ease: "easeInOut" }}
       />
-
-      <div className="absolute top-4 right-4 bg-accent/20 border-border text-accent group-hover:bg-accent group-hover:text-background group-hover:translate-y-[-2px] transition-all duration-300 rounded-full p-2">
-        <ArrowUpRightIcon className="size-6" />
-      </div>
-
-      {/* Icon with accent flash */}
       <span className="relative inline-flex items-center justify-center bg-muted/20 rounded-full w-12 h-12">
         <Image
           src={problem.icon}

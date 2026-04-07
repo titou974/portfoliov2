@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Button } from "@heroui/react";
 import SecretButton from "@/components/SecretButton";
 
 const geistSans = Geist({

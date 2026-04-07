@@ -39,9 +39,8 @@ export default function PageContainer({ children }: { children: ReactNode }) {
     container.addEventListener("mouseleave", onLeave, { passive: true });
 
     const unsub = subscribe((clientX, clientY) => {
-      const rect = container.getBoundingClientRect();
-      container.style.setProperty("--mouse-x", `${clientX - rect.left}px`);
-      container.style.setProperty("--mouse-y", `${clientY - rect.top}px`);
+      container.style.setProperty("--mouse-x", `${clientX}px`);
+      container.style.setProperty("--mouse-y", `${clientY}px`);
     });
 
     return () => {
@@ -56,9 +55,9 @@ export default function PageContainer({ children }: { children: ReactNode }) {
       <div className="hidden lg:block">
         <CustomCursor scrollY={scrollY} />
       </div>
-      <div ref={containerRef} className="lg:cursor-none overflow-hidden">
+      <div ref={containerRef} className="lg:cursor-none overflow-clip">
         <motion.div
-          className="absolute inset-0 pointer-events-none hidden lg:block"
+          className="fixed inset-0 pointer-events-none hidden lg:block"
           style={{
             opacity: combinedOpacity,
             backgroundImage: `radial-gradient(

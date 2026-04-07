@@ -1,71 +1,78 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import {
   motion,
   AnimatePresence,
   useScroll,
   useMotionValueEvent,
-  useInView,
 } from "framer-motion";
 import Image from "next/image";
+import { ArrowUpRightIcon } from "@heroicons/react/16/solid";
+import strings from "@/app/constants/strings.fr.json";
 
 interface Project {
   name: string;
   phonePreview?: string;
   secondPhonePreview?: string;
   laptopPreview?: string;
+  logo: string;
   testimonial: { text: string; author: string; role: string };
 }
 
 const projects: Project[] = [
   {
-    name: "Kessel Media",
+    name: strings.creations.projects.kesselMedia.name,
     phonePreview: "/creations/kesselmediaphone.webp",
     laptopPreview: "/creations/kesselmedia2laptop.webp",
+    logo: "/logos/logo_kessel.webp",
     testimonial: {
-      text: "Titou a transformé notre vision en une plateforme média performante et intuitive. Son approche technique et sa réactivité ont été remarquables du début à la fin.",
-      author: "Kessel Media",
-      role: "Plateforme média",
+      text: strings.creations.projects.kesselMedia.testimonial,
+      author: strings.creations.projects.kesselMedia.author,
+      role: strings.creations.projects.kesselMedia.role,
     },
   },
   {
-    name: "PulseAI",
+    name: strings.creations.projects.pulseAI.name,
     phonePreview: "/creations/pulseai-phone.png",
     secondPhonePreview: "/creations/pulseai-phone2.png",
+    logo: "/logos/logo_pulseia.png",
     testimonial: {
-      text: "L'intégration de l'IA dans notre app de nutrition est bluffante. Nos utilisateurs adorent l'expérience personnalisée, +40% d'engagement dès le lancement.",
-      author: "PulseAI",
-      role: "Coach nutrition IA",
+      text: strings.creations.projects.pulseAI.testimonial,
+      author: strings.creations.projects.pulseAI.author,
+      role: strings.creations.projects.pulseAI.role,
     },
   },
   {
-    name: "Nestor",
+    name: strings.creations.projects.nestor.name,
     phonePreview: "/creations/nestorphone.webp",
     secondPhonePreview: "/creations/nestor-phone2.png",
+    logo: "/logos/logo-nestor.svg",
     testimonial: {
-      text: "De l'idée au store en 6 semaines. L'app de voiturier qu'il a développée tourne sans accroc depuis le premier jour.",
-      author: "Nestor Valet",
-      role: "App voiturier",
+      text: strings.creations.projects.nestor.testimonial,
+      author: strings.creations.projects.nestor.author,
+      role: strings.creations.projects.nestor.role,
     },
   },
   {
-    name: "Bourbon Academy",
+    name: strings.creations.projects.bourbonAcademy.name,
     phonePreview: "/creations/bourbonacademy-phone.png",
     laptopPreview: "/creations/bourbonacademy-desktop.png",
+    logo: "/logos/logo_bourbon.jpg",
     testimonial: {
-      text: "La plateforme d'orientation a déjà aidé des centaines d'étudiants ultramarins à trouver leur voie. Un projet qui a du sens.",
-      author: "Bourbon Academy",
-      role: "Orientation scolaire",
+      text: strings.creations.projects.bourbonAcademy.testimonial,
+      author: strings.creations.projects.bourbonAcademy.author,
+      role: strings.creations.projects.bourbonAcademy.role,
     },
   },
   {
-    name: "WeDive",
+    name: strings.creations.projects.weDive.name,
     laptopPreview: "/creations/wedivelaptop.webp",
+    logo: "/logos/logo-wedive.png",
     testimonial: {
-      text: "WeDive est devenu la référence des spots de plongée à La Réunion. Titou a su capturer l'essence du projet dans chaque détail.",
-      author: "WeDive",
-      role: "Spots de plongée",
+      text: strings.creations.projects.weDive.testimonial,
+      author: strings.creations.projects.weDive.author,
+      role: strings.creations.projects.weDive.role,
     },
   },
 ];
@@ -179,7 +186,7 @@ function MockupDisplay({ project }: { project: Project }) {
       <div className="flex justify-center">
         <LaptopMockup
           src={project.laptopPreview!}
-          className="w-60 md:w-80 lg:w-96"
+          className="w-52 md:w-72 lg:w-80"
         />
       </div>
     );
@@ -190,167 +197,141 @@ function MockupDisplay({ project }: { project: Project }) {
 
 /* ── Main section ──────────────────────────────────────────────────── */
 
-export default function CreationsSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [autoplay, setAutoplay] = useState(false);
-  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
-  const hasAutoplayedRef = useRef(false);
+const LINE =
+  "before:absolute before:w-screen before:border-[0.5px] before:border-border before:inset-x-0 before:left-1/2 before:-translate-x-1/2 before:opacity-60 before:top-[-2px] after:absolute after:w-screen after:border-[0.5px] after:border-border after:inset-x-0 after:left-1/2 after:-translate-x-1/2 after:opacity-60 after:bottom-[-2px]";
 
-  const inView = useInView(sectionRef, { margin: "-100px" });
+export default function CreationsSection({
+  title,
+  subtitle,
+}: {
+  title: string;
+  subtitle: string;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [segmentProgress, setSegmentProgress] = useState(0);
 
   const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 0.85", "start 0.15"],
+    target: containerRef,
+    offset: ["start start", "end end"],
   });
 
-  // Phase 1: scroll-linked — advance through items 0 & 1
-  // Phase 2: after idle, autoplay takes over
   useMotionValueEvent(scrollYProgress, "change", (progress) => {
-    if (!inView) return;
-
-    if (!hasAutoplayedRef.current) {
-      const index = progress < 0.5 ? 0 : 1;
-      setActiveIndex(index);
-    }
-
-    clearTimeout(scrollTimeoutRef.current);
-    setAutoplay(false);
-    scrollTimeoutRef.current = setTimeout(() => {
-      setAutoplay(true);
-      hasAutoplayedRef.current = true;
-    }, 1200);
+    const total = projects.length;
+    const scaled = progress * total;
+    const index = Math.min(Math.floor(scaled), total - 1);
+    setActiveIndex(index);
+    setSegmentProgress(Math.min(scaled - index, 1));
   });
-
-  // Autoplay loop
-  useEffect(() => {
-    if (!autoplay || !inView) return;
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % projects.length);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, [autoplay, inView]);
-
-  useEffect(() => {
-    return () => clearTimeout(scrollTimeoutRef.current);
-  }, []);
 
   const project = projects[activeIndex];
 
-  const handleDotClick = (i: number) => {
-    setActiveIndex(i);
-    setAutoplay(false);
-    hasAutoplayedRef.current = true;
-    clearTimeout(scrollTimeoutRef.current);
-    scrollTimeoutRef.current = setTimeout(() => setAutoplay(true), 4000);
-  };
-
   return (
-    <div ref={sectionRef} className="px-4 md:px-0">
-      {/* Carousel container */}
-      <div className="relative overflow-hidden rounded-2xl border border-neutral bg-[var(--background)] p-6 pt-14 md:p-10 md:pt-16 min-h-[340px] md:min-h-[420px] flex flex-col items-center justify-center">
-        {/* Project name pill */}
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={project.name}
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.3 }}
-            className="absolute top-4 left-4 md:top-6 md:left-6 bg-accent/10 text-accent text-xs font-semibold px-3 py-1.5 rounded-full"
+    <section ref={containerRef} className="relative mt-16 h-[400vh] md:px-6">
+      <div className="sticky top-0 flex h-dvh flex-col items-center justify-center">
+        {/* Section title — same style as SectionWrapper */}
+        <div className="mb-10 md:mb-16 text-center space-y-4">
+          <h2
+            className={`relative text-lg font-semibold text-base-content md:text-3xl tracking-tight ${LINE}`}
           >
-            {project.name}
-          </motion.span>
-        </AnimatePresence>
-
-        {/* Slide counter */}
-        <span className="absolute top-4 right-4 md:top-6 md:right-6 text-xs text-foreground/40 font-mono tabular-nums">
-          {String(activeIndex + 1).padStart(2, "0")} /{" "}
-          {String(projects.length).padStart(2, "0")}
-        </span>
-
-        {/* Mockup display */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeIndex}
-            initial={{ opacity: 0, x: 80, scale: 0.95 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: -80, scale: 0.95 }}
-            transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="flex-1 flex items-center justify-center"
+            {title}
+          </h2>
+          <p
+            className={`relative mt-2 text-sm text-foreground md:text-base ${LINE}`}
           >
-            <MockupDisplay project={project} />
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Dot navigation */}
-        <div className="flex items-center gap-2 mt-6">
-          {projects.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => handleDotClick(i)}
-              aria-label={`Voir projet ${i + 1}`}
-              className="relative p-1"
-            >
-              <span
-                className={`block rounded-full transition-all duration-300 ${
-                  i === activeIndex
-                    ? "w-6 h-2 bg-accent"
-                    : "w-2 h-2 bg-foreground/20 hover:bg-foreground/40"
-                }`}
-              />
-            </button>
-          ))}
+            {subtitle}
+          </p>
         </div>
-      </div>
 
-      {/* Testimonial card */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeIndex}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -16 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="mt-4 p-5 rounded-xl border border-neutral bg-[var(--background)]"
-        >
-          <div className="flex items-start gap-3">
-            <span className="text-accent text-2xl leading-none select-none">
-              &ldquo;
-            </span>
-            <div className="flex-1">
-              <p className="text-sm leading-relaxed text-foreground">
-                {project.testimonial.text}
-              </p>
-              <div className="mt-3 flex items-center justify-between">
-                <div>
-                  <p className="text-xs font-semibold text-base-content">
-                    {project.testimonial.author}
-                  </p>
-                  <p className="text-xs text-foreground/50">
-                    {project.testimonial.role}
-                  </p>
-                </div>
-                {autoplay && (
-                  <motion.div
-                    className="h-0.5 bg-accent/30 rounded-full overflow-hidden w-16"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+        <div className="w-full max-w-2xl mx-auto px-4 md:px-0">
+          <div className="group relative overflow-hidden rounded-2xl border border-neutral bg-surface p-6 pt-14 md:p-10 md:pt-16 min-h-[340px] md:min-h-[420px] flex flex-col items-center justify-center">
+            <div className="absolute top-4 right-4 bg-accent/20 border-border text-accent group-hover:bg-accent group-hover:text-background group-hover:translate-y-[-2px] transition-all duration-300 rounded-full p-2">
+              <ArrowUpRightIcon className="size-6" />
+            </div>
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={project.name}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="absolute top-4 left-4 md:top-6 md:left-6 border border-border text-foreground text-xs font-semibold p-1 rounded-lg"
+                src={project.logo}
+                alt={project.name + " Logo"}
+                width={40}
+                height={40}
+              />
+            </AnimatePresence>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, x: 80, scale: 0.95 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: -80, scale: 0.95 }}
+                transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="flex-1 flex items-center justify-center"
+              >
+                <MockupDisplay project={project} />
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Progress dots */}
+            <div className="flex items-center gap-2 mt-6">
+              {projects.map((_, i) => (
+                <div key={i} className="p-1">
+                  <span
+                    className={`block rounded-full transition-all duration-300 overflow-hidden ${
+                      i === activeIndex
+                        ? "w-6 h-2 bg-accent/30"
+                        : i < activeIndex
+                          ? "w-2 h-2 bg-accent"
+                          : "w-2 h-2 bg-foreground/20"
+                    }`}
                   >
-                    <motion.div
-                      className="h-full bg-accent rounded-full"
-                      initial={{ width: "0%" }}
-                      animate={{ width: "100%" }}
-                      transition={{ duration: 3.5, ease: "linear" }}
-                      key={`progress-${activeIndex}`}
-                    />
-                  </motion.div>
-                )}
-              </div>
+                    {i === activeIndex && (
+                      <span
+                        className="block h-full bg-accent rounded-full transition-[width] duration-100"
+                        style={{ width: `${segmentProgress * 100}%` }}
+                      />
+                    )}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
-        </motion.div>
-      </AnimatePresence>
-    </div>
+
+          {/* Testimonial card */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="mt-4 p-5 rounded-xl border border-neutral bg-surface"
+            >
+              <div className="flex items-start gap-3">
+                <span className="text-accent text-2xl leading-none select-none">
+                  &ldquo;
+                </span>
+                <div className="flex-1">
+                  <p className="text-sm leading-relaxed text-foreground">
+                    {project.testimonial.text}
+                  </p>
+                  <div className="mt-3">
+                    <p className="text-xs font-semibold text-base-content">
+                      {project.testimonial.author}
+                    </p>
+                    <p className="text-xs text-foreground/50">
+                      {project.testimonial.role}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    </section>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { t } from "@/lib/strings";
 
 declare global {
   interface Window {
@@ -39,9 +40,7 @@ export default function VideosSection() {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="text-sm text-foreground text-center mb-10 md:mb-14 max-w-lg mx-auto"
       >
-        Pendant que l&apos;IA génère du code jetable, j&apos;enseigne les
-        fondamentaux qui font la différence entre un développeur et un prompt
-        engineer.
+        {t("videos.description")}
       </motion.p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-4 md:px-0">
@@ -111,7 +110,7 @@ export default function VideosSection() {
                 rel="noopener noreferrer"
                 className="block text-center text-sm text-foreground/50 py-12"
               >
-                Voir cette publication sur Instagram
+                {t("videos.viewPost")}
               </a>
             </div>
           </blockquote>
