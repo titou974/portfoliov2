@@ -59,7 +59,7 @@ export const BIO_ACTIVITIES: BioLink[] = [
     icon: "/creations/plant.png",
     titleKey: "bio.activities.portfolio.title",
     subtitleKey: "bio.activities.portfolio.subtitle",
-    href: "",
+    href: "https://titouanhirsch.com/",
   },
 ];
 

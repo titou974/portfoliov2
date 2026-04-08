@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { ArrowUpRightIcon } from "@heroicons/react/16/solid";
 import { t } from "@/lib/strings";
-import Link from "next/link";
 
 export default function LinkCard({
   icon,
@@ -19,9 +18,10 @@ export default function LinkCard({
   badge?: string;
 }) {
   return (
-    <Link
+    <a
       href={href}
       target="_blank"
+      rel="noopener noreferrer"
       className={`group relative flex items-center gap-4 rounded-xl p-4 transition-all duration-200 hover:translate-y-[-1px] ${
         primary
           ? "border border-transparent bg-surface"
@@ -73,6 +73,6 @@ export default function LinkCard({
       >
         <ArrowUpRightIcon className="size-4" />
       </div>
-    </Link>
+    </a>
   );
 }
