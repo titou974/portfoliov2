@@ -47,19 +47,19 @@ export const BIO_CONTACT: BioLink = {
 };
 
 export const BIO_ACTIVITIES: BioLink[] = [
-  {
-    id: "projects",
-    icon: "/creations/projects.png",
-    titleKey: "bio.activities.projects.title",
-    subtitleKey: "bio.activities.projects.subtitle",
-    href: "/projets",
-  },
+  // {
+  //   id: "projects",
+  //   icon: "/creations/projects.png",
+  //   titleKey: "bio.activities.projects.title",
+  //   subtitleKey: "bio.activities.projects.subtitle",
+  //   href: "/projets",
+  // },
   {
     id: "portfolio",
     icon: "/creations/plant.png",
     titleKey: "bio.activities.portfolio.title",
     subtitleKey: "bio.activities.portfolio.subtitle",
-    href: "#",
+    href: "/",
   },
 ];
 

@@ -6,6 +6,8 @@ import { Button } from "@heroui/react";
 import { ArrowUpRightIcon } from "@heroicons/react/16/solid";
 import Image from "next/image";
 import { t } from "@/lib/strings";
+import { BIO_CONTACT } from "@/app/constants";
+import Link from "next/link";
 
 export default function BookingSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -71,9 +73,15 @@ export default function BookingSection() {
               {t("booking.description")}
             </p>
             <div className="mt-6">
-              <Button variant="primary" size="lg" onPress={() => {}}>
-                {t("booking.cta")}
-                <ArrowUpRightIcon className="size-4" />
+              <Button variant="primary" size="lg">
+                <Link
+                  href={BIO_CONTACT.href}
+                  target="_blank"
+                  className="flex gap-2 items-center"
+                >
+                  {t("booking.cta")}
+                  <ArrowUpRightIcon className="size-4" />
+                </Link>
               </Button>
             </div>
           </div>

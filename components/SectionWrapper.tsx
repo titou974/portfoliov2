@@ -7,10 +7,12 @@ const LINE =
   "before:absolute before:w-screen before:border-[0.5px] before:border-border before:inset-x-0 before:left-1/2 before:-translate-x-1/2 before:opacity-60 before:top-[-2px] after:absolute after:w-screen after:border-[0.5px] after:border-border after:inset-x-0 after:left-1/2 after:-translate-x-1/2 after:opacity-60 after:bottom-[-2px]";
 
 export default function SectionWrapper({
+  id,
   title,
   subtitle,
   children,
 }: {
+  id?: string;
   title: string;
   subtitle: string;
   children: ReactNode;
@@ -19,7 +21,7 @@ export default function SectionWrapper({
   const inView = useInView(titleRef, { once: true, margin: "-40px" });
 
   return (
-    <section className="mt-16 md:px-6">
+    <section id={id} className="mt-16 md:px-6">
       <motion.div
         ref={titleRef}
         className="relative mb-10 text-center md:mb-16 space-y-4"

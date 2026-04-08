@@ -21,6 +21,7 @@ export default function Home() {
         <PageWrapper>
           <Hero />
           <SectionWrapper
+            id="problems"
             title={t("sections.problems.title")}
             subtitle={t("sections.problems.subtitle")}
           >

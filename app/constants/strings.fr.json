@@ -118,25 +118,25 @@
     "projects": {
       "kesselMedia": {
         "name": "Kessel Media",
-        "testimonial": "Titou a transformé notre vision en une plateforme média performante et intuitive. Son approche technique et sa réactivité ont été remarquables du début à la fin.",
-        "author": "Kessel Media",
-        "role": "Plateforme média"
+        "testimonial": "Titouan a démontré sa capacité à apprendre et à travailler rapidement, contribuant ainsi à l'évolution rapide de la plateforme de Kessel !",
+        "author": "Alexis Pibrac, CTO de Kessel Media",
+        "role": "Le YouTube de la Newsletter"
       },
       "pulseAI": {
         "name": "PulseAI",
-        "testimonial": "L'intégration de l'IA dans notre app de nutrition est bluffante. Nos utilisateurs adorent l'expérience personnalisée, +40% d'engagement dès le lancement.",
-        "author": "PulseAI",
+        "testimonial": "Super création du design de l'application en reprenant la web app que j'avais codé avec Lovable. Il nous a rendu un Figma bluffant avec un prototype intégré. Il a même repensé à optimisé le parcours et les écrans pour une meilleure expérience utilisateur.",
+        "author": "Bryan Saejis, Fondateur de Pulse AI",
         "role": "Coach nutrition IA"
       },
       "nestor": {
         "name": "Nestor",
-        "testimonial": "De l'idée au store en 6 semaines. L'app de voiturier qu'il a développée tourne sans accroc depuis le premier jour.",
-        "author": "Nestor Valet",
+        "testimonial": "J'ai parlé de mon idée d'app de voiturier à Titouan, et en quelques semaines il a développé un MVP fonctionnel qui a impressionné nos premiers clients !",
+        "author": "Samuel Doutriaux, Co-fondateur de Nestor",
         "role": "App voiturier"
       },
       "bourbonAcademy": {
         "name": "Bourbon Academy",
-        "testimonial": "La plateforme d'orientation a déjà aidé des centaines d'étudiants ultramarins à trouver leur voie. Un projet qui a du sens.",
+        "testimonial": "J'ai contacté le @bobodigital_ pour créer une plateforme d'orientation scolaire, et il a livré un produit professionnel en 78h, en effectuant mes retours rapidement",
         "author": "Bourbon Academy",
         "role": "Orientation scolaire"
       },

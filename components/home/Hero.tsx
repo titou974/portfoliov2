@@ -2,13 +2,18 @@
 
 import { useState } from "react";
 import { Avatar, Tooltip, Button } from "@heroui/react";
-import { ArrowUpRightIcon } from "@heroicons/react/16/solid";
+import {
+  ArrowUpRightIcon,
+  ChevronDoubleDownIcon,
+} from "@heroicons/react/16/solid";
 import { motion } from "framer-motion";
 import { fadeUp, HERO_DELAYS } from "@/lib/animation";
 import { t } from "@/lib/strings";
 import strings from "@/app/constants/strings.fr.json";
 import { PhotoGallery } from "./PhotoGallery";
 import { Typewriter } from "./Typewriter";
+import Link from "next/link";
+import { BIO_CONTACT } from "@/app/constants";
 
 const TYPEWRITER_WORDS = strings.hero.typewriter;
 
@@ -66,12 +71,25 @@ export default function Hero() {
           {...fadeUp(HERO_DELAYS.PARAGRAPH)}
           className="flex flex-col md:flex-row-reverse items-center justify-center gap-3 mt-2"
         >
-          <Button variant="primary" onPress={() => {}}>
-            {t("hero.ctaPrimary")}
-            <ArrowUpRightIcon className="size-4" />
+          <Button variant="primary" className="w-60 md:w-auto">
+            <Link
+              href={BIO_CONTACT.href}
+              target="_blank"
+              className="flex items-center gap-2"
+            >
+              {t("hero.ctaPrimary")}
+              <ArrowUpRightIcon className="size-4" />
+            </Link>
           </Button>
-          <Button variant="secondary" onPress={() => {}}>
+          <Button
+            onClick={() => {
+              document.getElementById("problems")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            variant="secondary"
+            className="w-60 md:w-auto bg-transparent hover:bg-accent hover:text-white border-accent border-2"
+          >
             {t("hero.ctaSecondary")}
+            <ChevronDoubleDownIcon className="size-4" />
           </Button>
         </motion.div>
       </div>
