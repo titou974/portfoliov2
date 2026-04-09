@@ -156,11 +156,11 @@
       "items": {
         "partnership": {
           "title": "La question du temps ?",
-          "description": "C'est souvent la première question — et elle est cruciale. Ma réponse : on définit ensemble la structure et les fonctionnalités de votre produit, puis je consacre une journée à cadrer la stack technique, les outils et le processus de développement, avec une liste de tâches et un temps estimé pour chacune."
+          "description": "C'est souvent la première question, et elle est cruciale. Ma réponse : on définit ensemble la structure et les fonctionnalités de votre produit, puis je consacre une journée à cadrer la stack technique, les outils et le processus de développement, avec une liste de tâches et un temps estimé pour chacune."
         },
         "fullCode": {
           "title": "On construit bien, et on teste votre marché rapidement",
-          "description": "Autant poser de bonnes bases dès le départ — ça économise du temps et de l'argent. Je construis les fondations avec mes connaissances, puis j'utilise l'IA entraînée sur les bonnes pratiques pour aller vite sans sacrifier la qualité. On valide votre marché : si ça marche, on continue ; sinon, on pivote."
+          "description": "Autant poser de bonnes bases dès le départ, ça vous économise du temps et de l'argent. Je construis les fondations avec mes connaissances, puis j'utilise l'IA entraînée sur les bonnes pratiques pour aller vite sans sacrifier la qualité. On valide votre marché : si ça marche, on continue ; sinon, on pivote."
         },
         "excellence": {
           "title": "Un parcours utilisateur au cœur du projet",
@@ -168,7 +168,7 @@
         },
         "marketing": {
           "title": "Visibilité intégrée via le #BuildInPublic",
-          "description": "J'aide à acquérir vos premiers utilisateurs en donnant de la visibilité à votre projet sur mes réseaux, via des vidéos régulières qui dévoilent les coulisses de la construction — transparence et authenticité garanties."
+          "description": "J'aide à acquérir vos premiers utilisateurs en donnant de la visibilité à votre projet sur mes réseaux, via des vidéos régulières qui dévoilent les coulisses de la construction, transparence et authenticité garanties."
         },
         "innovation": {
           "title": "Innovation continue",
@@ -186,7 +186,7 @@
         },
         "templates": {
           "title": "Dette technique",
-          "description": "Avec la mauvaise utilisation de l'IA, ce terme revient de plus en plus. Des solutions préfabriquées peuvent sembler rapides et bon marché, mais elles génèrent des problèmes de performance, de sécurité et de maintenabilité — et vous forcent à payer pour des corrections que vous n'aviez pas anticipées."
+          "description": "Avec la mauvaise utilisation de l'IA, ce terme revient de plus en plus. Des solutions préfabriquées peuvent sembler rapides et bon marché, mais elles génèrent des problèmes de performance, de sécurité et de maintenabilité, et vous forcent à payer pour des corrections que vous n'aviez pas anticipées."
         },
         "standardDev": {
           "title": "Un UI/UX négligé qui rend votre produit inutile",
@@ -198,7 +198,7 @@
         },
         "limitedInnovation": {
           "title": "Un parcours utilisateur laissé à l'abandon",
-          "description": "Les parcours utilisateurs sont souvent construits en parallèle du code, sans réelle attention à l'expérience. Résultat : un produit qui a coûté du temps et de l'argent, mais que personne n'utilise — et qu'il faudra reprendre de zéro."
+          "description": "Les parcours utilisateurs sont souvent construits en parallèle du code, sans réelle attention à l'expérience. Résultat : un produit qui a coûté du temps et de l'argent, mais que personne n'utilise, et qu'il faudra reprendre de zéro."
         }
       }
     }
@@ -208,7 +208,7 @@
     "viewPost": "Voir cette publication sur Instagram"
   },
   "booking": {
-    "title": "Réserver un créneau",
+    "title": "Réservez un créneau",
     "description": "Discutons de votre projet autour d'un appel de 30 minutes, sans engagement.",
     "cta": "Réserver un appel",
     "calendarAlt": "Calendrier"
