@@ -5,6 +5,7 @@ export interface BioLink {
   subtitleKey: string;
   href: string;
   primary?: boolean;
+  highlighted?: boolean;
   badge?: string;
 }
 
@@ -35,6 +36,16 @@ export const BIO_STATS: BioStat[] = [
     labelKey: "bio.stats.projectsLabel",
   },
 ];
+
+export const BIO_PRESALE: BioLink = {
+  id: "presale",
+  icon: "/logos/codeself.svg",
+  titleKey: "bio.presale.title",
+  subtitleKey: "bio.presale.subtitle",
+  href: "https://code-self.com",
+  primary: true,
+  highlighted: true,
+};
 
 export const BIO_CONTACT: BioLink = {
   id: "contact",

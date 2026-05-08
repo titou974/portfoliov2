@@ -8,6 +8,7 @@ export default function LinkCard({
   subtitleKey,
   href,
   primary = false,
+  highlighted = false,
   badge,
 }: {
   icon: string;
@@ -15,6 +16,7 @@ export default function LinkCard({
   subtitleKey: string;
   href: string;
   primary?: boolean;
+  highlighted?: boolean;
   badge?: string;
 }) {
   return (
@@ -23,12 +25,14 @@ export default function LinkCard({
       target="_blank"
       rel="noopener noreferrer"
       className={`group relative flex items-center gap-4 rounded-xl p-4 transition-all duration-200 hover:translate-y-[-1px] ${
-        primary
+        highlighted
+          ? "bg-accent shadow-xl shadow-accent/40 hover:shadow-accent/60"
+          : primary
           ? "border border-transparent bg-surface"
           : "border border-border bg-surface"
       }`}
       style={
-        primary
+        primary && !highlighted
           ? {
               backgroundImage: `linear-gradient(var(--color-surface), var(--color-surface)), linear-gradient(135deg, var(--color-accent), color-mix(in srgb, var(--color-accent) 40%, transparent), var(--color-accent))`,
               backgroundOrigin: "border-box",
@@ -39,7 +43,13 @@ export default function LinkCard({
       }
     >
       {badge && (
-        <span className="absolute -top-2.5 left-4 bg-accent text-background text-[10px] font-bold px-2 py-0.5 rounded-full">
+        <span
+          className={`absolute -top-2.5 left-4 text-[10px] font-bold px-2 py-0.5 rounded-full ${
+            highlighted
+              ? "bg-background text-accent"
+              : "bg-accent text-background"
+          }`}
+        >
           {t(badge)}
         </span>
       )}
@@ -55,10 +65,18 @@ export default function LinkCard({
           />
         </span>
         <div className="min-w-0">
-          <p className="text-sm font-semibold text-base-content truncate">
+          <p
+            className={`text-sm font-semibold truncate ${
+              highlighted ? "text-background" : "text-base-content"
+            }`}
+          >
             {t(titleKey)}
           </p>
-          <p className="text-xs text-foreground/60 truncate">
+          <p
+            className={`text-xs truncate ${
+              highlighted ? "text-background/80" : "text-foreground/60"
+            }`}
+          >
             {t(subtitleKey)}
           </p>
         </div>
@@ -66,7 +84,9 @@ export default function LinkCard({
 
       <div
         className={`shrink-0 rounded-full p-2 transition-all duration-300 group-hover:translate-y-[-2px] ${
-          primary
+          highlighted
+            ? "bg-background/20 text-background group-hover:bg-background group-hover:text-accent"
+            : primary
             ? "bg-accent/20 text-accent group-hover:bg-accent group-hover:text-background"
             : "border border-border text-foreground/50 group-hover:text-foreground"
         }`}

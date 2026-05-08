@@ -6,6 +6,7 @@ import { t } from "@/lib/strings";
 import {
   PROFILE,
   BIO_STATS,
+  BIO_PRESALE,
   BIO_CONTACT,
   BIO_ACTIVITIES,
   BIO_SOCIALS,
@@ -70,8 +71,21 @@ export default function BioPage() {
         ))}
       </div>
 
-      {/* Contact */}
+      {/* Pré-inscription CodeSelf */}
       <div className="mt-8">
+        <LinkCard
+          icon={BIO_PRESALE.icon}
+          titleKey={BIO_PRESALE.titleKey}
+          subtitleKey={BIO_PRESALE.subtitleKey}
+          href={BIO_PRESALE.href}
+          primary={BIO_PRESALE.primary}
+          highlighted={BIO_PRESALE.highlighted}
+          badge={BIO_PRESALE.badge}
+        />
+      </div>
+
+      {/* Contact */}
+      <div className="mt-5">
         <LinkCard
           icon={BIO_CONTACT.icon}
           titleKey={BIO_CONTACT.titleKey}
