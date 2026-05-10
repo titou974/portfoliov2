@@ -5,8 +5,9 @@ export interface BioLink {
   subtitleKey: string;
   href: string;
   primary?: boolean;
-  highlighted?: boolean;
+  codeself?: boolean;
   badge?: string;
+  image?: string;
 }
 
 export interface BioStat {
@@ -44,7 +45,8 @@ export const BIO_PRESALE: BioLink = {
   subtitleKey: "bio.presale.subtitle",
   href: "https://code-self.com",
   primary: true,
-  highlighted: true,
+  codeself: true,
+  image: "/creations/codeself.png",
 };
 
 export const BIO_CONTACT: BioLink = {
@@ -58,13 +60,15 @@ export const BIO_CONTACT: BioLink = {
 };
 
 export const BIO_ACTIVITIES: BioLink[] = [
-  // {
-  //   id: "projects",
-  //   icon: "/creations/projects.png",
-  //   titleKey: "bio.activities.projects.title",
-  //   subtitleKey: "bio.activities.projects.subtitle",
-  //   href: "/projets",
-  // },
+  {
+    id: "contact",
+    icon: "/creations/calendar.png",
+    titleKey: "bio.contact.title",
+    subtitleKey: "bio.contact.subtitle",
+    href: "https://cal.eu/bobodigital",
+    primary: true,
+    badge: "bio.contact.badge",
+  },
   {
     id: "portfolio",
     icon: "/creations/plant.png",

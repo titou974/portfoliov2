@@ -54,9 +54,7 @@ export default function BioPage() {
         <h1 className="mt-4 text-xl font-bold text-base-content">
           {t(PROFILE.username)}
         </h1>
-        <p className="mt-1 text-sm text-foreground/70">
-          {t(PROFILE.tagline)}
-        </p>
+        <p className="mt-1 text-sm text-foreground/70">{t(PROFILE.tagline)}</p>
       </div>
 
       {/* Stats */}
@@ -79,24 +77,11 @@ export default function BioPage() {
           subtitleKey={BIO_PRESALE.subtitleKey}
           href={BIO_PRESALE.href}
           primary={BIO_PRESALE.primary}
-          highlighted={BIO_PRESALE.highlighted}
+          codeself={BIO_PRESALE.codeself}
           badge={BIO_PRESALE.badge}
+          image={BIO_PRESALE.image}
         />
       </div>
-
-      {/* Contact */}
-      <div className="mt-5">
-        <LinkCard
-          icon={BIO_CONTACT.icon}
-          titleKey={BIO_CONTACT.titleKey}
-          subtitleKey={BIO_CONTACT.subtitleKey}
-          href={BIO_CONTACT.href}
-          primary={BIO_CONTACT.primary}
-          badge={BIO_CONTACT.badge}
-        />
-      </div>
-
-      {/* Activités */}
       <SectionTitle title={t("bio.sections.activities")} />
       <div className="space-y-3">
         {BIO_ACTIVITIES.map((link) => (
@@ -106,6 +91,8 @@ export default function BioPage() {
             titleKey={link.titleKey}
             subtitleKey={link.subtitleKey}
             href={link.href}
+            primary={link.primary}
+            badge={link.badge}
           />
         ))}
       </div>
