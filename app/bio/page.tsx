@@ -79,7 +79,6 @@ export default function BioPage() {
           primary={BIO_PRESALE.primary}
           codeself={BIO_PRESALE.codeself}
           badge={BIO_PRESALE.badge}
-          image={BIO_PRESALE.image}
         />
       </div>
       <SectionTitle title={t("bio.sections.activities")} />
