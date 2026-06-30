@@ -68,9 +68,7 @@ export default function BioPage() {
           />
         ))}
       </div>
-
-      {/* Pré-inscription CodeSelf */}
-      <div className="mt-8">
+      {/* <div className="mt-8">
         <LinkCard
           icon={BIO_PRESALE.icon}
           titleKey={BIO_PRESALE.titleKey}
@@ -80,7 +78,7 @@ export default function BioPage() {
           codeself={BIO_PRESALE.codeself}
           badge={BIO_PRESALE.badge}
         />
-      </div>
+      </div> */}
       <SectionTitle title={t("bio.sections.activities")} />
       <div className="space-y-3">
         {BIO_ACTIVITIES.map((link) => (
