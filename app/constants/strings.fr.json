@@ -17,6 +17,10 @@
     "sections": {
       "socials": "Mes réseaux"
     },
+    "portfolio": {
+      "title": "Mon portfolio",
+      "subtitle": "Tout mon travail en un coup d'oeil"
+    },
     "socials": {
       "instagram": {
         "title": "Instagram",

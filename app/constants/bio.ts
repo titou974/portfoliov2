@@ -30,6 +30,13 @@ export const BIO_CONTACT: BioLink = {
 
 export const BIO_SOCIALS: BioLink[] = [
   {
+    id: "portfolio",
+    icon: "/creations/portfolio.png",
+    titleKey: "bio.portfolio.title",
+    subtitleKey: "bio.portfolio.subtitle",
+    href: "https://titouanhirsch.com",
+  },
+  {
     id: "instagram",
     icon: "/creations/instagram.webp",
     titleKey: "bio.socials.instagram.title",

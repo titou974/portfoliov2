@@ -28,16 +28,6 @@ const LEAVES: FloatingLeaf[] = [
     opacity: 0.16,
   },
   {
-    id: "top-right",
-    className: "-right-12 top-24",
-    size: 190,
-    rotate: -145,
-    sway: -7,
-    duration: 13,
-    delay: 1.2,
-    opacity: 0.13,
-  },
-  {
     id: "mid-left",
     className: "-left-16 top-[45%]",
     size: 210,
