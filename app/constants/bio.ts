@@ -4,13 +4,13 @@ export interface BioLink {
   titleKey: string;
   subtitleKey: string;
   href: string;
-  variant?: "codeself" | "primary";
+  variant?: "codeself" | "accent";
   badge?: string;
 }
 
 export const BIO_CODESELF: BioLink = {
   id: "codeself",
-  icon: "/logos/codeself-black.svg",
+  icon: "/logos/codeself.svg",
   titleKey: "bio.codeself.title",
   subtitleKey: "bio.codeself.subtitle",
   href: "https://code-self.com",
@@ -24,7 +24,7 @@ export const BIO_CONTACT: BioLink = {
   titleKey: "bio.contact.title",
   subtitleKey: "bio.contact.subtitle",
   href: "https://cal.eu/bobodigital",
-  variant: "primary",
+  variant: "accent",
   badge: "bio.contact.badge",
 };
 
@@ -63,5 +63,4 @@ export const PROFILE = {
   avatar: "/titou-bio.jpg",
   username: "bio.username",
   tagline: "bio.tagline",
-  description: "bio.description",
 } as const;

@@ -100,9 +100,6 @@ export default function BioProfile() {
       <p className="mt-1 text-sm font-medium text-accent">
         {t(PROFILE.tagline)}
       </p>
-      <p className="mt-3 max-w-xs text-sm leading-relaxed text-foreground/70">
-        {t(PROFILE.description)}
-      </p>
     </div>
   );
 }
