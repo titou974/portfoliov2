@@ -2,152 +2,96 @@ import Image from "next/image";
 import { ArrowUpRightIcon } from "@heroicons/react/16/solid";
 import { t } from "@/lib/strings";
 
+// The two hero CTAs share the same shape and size, only the accent color
+// changes: black for CodeSelf, green for the call booking.
+const HERO_STYLES = {
+  codeself: {
+    card: "border-black shadow-[0_4px_0_0_#000] hover:shadow-[0_6px_0_0_#000]",
+    badge: "bg-black text-white",
+    arrow: "bg-black text-white",
+  },
+  accent: {
+    card: "border-accent shadow-[0_4px_0_0_var(--color-accent)] hover:shadow-[0_6px_0_0_var(--color-accent)]",
+    badge: "bg-accent text-white",
+    arrow: "bg-accent text-white",
+  },
+} as const;
+
 export default function LinkCard({
   icon,
   titleKey,
   subtitleKey,
   href,
-  primary = false,
-  codeself = false,
+  variant,
   badge,
-  image,
 }: {
   icon: string;
   titleKey: string;
   subtitleKey: string;
   href: string;
-  primary?: boolean;
-  codeself?: boolean;
+  variant?: "codeself" | "accent";
   badge?: string;
-  image?: string;
 }) {
+  const hero = variant ? HERO_STYLES[variant] : null;
+
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative flex items-center ${image ? "flex-col" : ""} rounded-xl p-4 transition-all duration-200 hover:translate-y-[-1px] ${
-        codeself
-          ? "bg-[#010001] shadow-xl shadow-[#010001]/40 hover:shadow-[#010001]/60"
-          : primary
-            ? "border border-transparent bg-surface"
-            : "border border-border bg-surface"
+      className={`group relative flex items-center rounded-2xl transition-all duration-200 hover:-translate-y-0.5 ${
+        hero
+          ? `border-2 bg-white p-5 ${hero.card}`
+          : "border border-border bg-surface p-4 hover:border-accent/40"
       }`}
-      style={
-        primary && !codeself
-          ? {
-              backgroundImage: `linear-gradient(var(--color-surface), var(--color-surface)), linear-gradient(135deg, var(--color-accent), color-mix(in srgb, var(--color-accent) 40%, transparent), var(--color-accent))`,
-              backgroundOrigin: "border-box",
-              backgroundClip: "padding-box, border-box",
-              border: "1px solid transparent",
-            }
-          : undefined
-      }
     >
       {badge && (
         <span
-          className={`absolute -top-2.5 left-4 text-[10px] font-bold px-2 py-0.5 rounded-full ${
-            codeself ? "bg-background text-accent" : "bg-accent text-background"
+          className={`absolute -top-2.5 left-4 rounded-full px-2 py-0.5 text-[10px] font-bold ${
+            hero ? hero.badge : "bg-accent text-white"
           }`}
         >
           {t(badge)}
         </span>
       )}
-      {image ? (
-        <>
-          <div className="w-full flex items-center">
-            <div className="flex items-center gap-3 flex-1 min-w-0">
-              <span className="shrink-0">
-                <Image
-                  src={icon}
-                  alt={t(titleKey)}
-                  width={36}
-                  height={36}
-                  className="drop-shadow-md"
-                />
-              </span>
-              <div className="min-w-0">
-                <p
-                  className={`text-sm font-semibold truncate ${
-                    codeself ? "text-background" : "text-base-content"
-                  }`}
-                >
-                  {t(titleKey)}
-                </p>
-                <p
-                  className={`text-xs truncate ${
-                    codeself ? "text-background/80" : "text-foreground/60"
-                  }`}
-                >
-                  {t(subtitleKey)}
-                </p>
-              </div>
-            </div>
 
-            <div
-              className={`flex items-center justify-center shrink-0 rounded-full p-2 transition-all duration-300 group-hover:translate-y-[-2px] ${
-                codeself
-                  ? "bg-surface text-[#010001] group-hover:bg-accent group-hover:text-surface"
-                  : primary
-                    ? "bg-accent/20 text-accent group-hover:bg-accent group-hover:text-background"
-                    : "border border-border text-foreground/50 group-hover:text-foreground"
-              }`}
-            >
-              <ArrowUpRightIcon className="size-4" />
-            </div>
-          </div>
-          <div className="p-1 border border-border mt-4 rounded-xl">
-            <Image
-              src={image}
-              alt={t(titleKey)}
-              width={400}
-              height={400}
-              className="w-full rounded-xl"
-            />
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="flex items-center gap-3 flex-1 min-w-0">
-            <span className="shrink-0">
-              <Image
-                src={icon}
-                alt={t(titleKey)}
-                width={36}
-                height={36}
-                className="drop-shadow-md"
-              />
-            </span>
-            <div className="min-w-0">
-              <p
-                className={`text-sm font-semibold truncate ${
-                  codeself ? "text-background" : "text-base-content"
-                }`}
-              >
-                {t(titleKey)}
-              </p>
-              <p
-                className={`text-xs truncate ${
-                  codeself ? "text-background/80" : "text-foreground/60"
-                }`}
-              >
-                {t(subtitleKey)}
-              </p>
-            </div>
-          </div>
-          <div
-            className={`flex items-center justify-center shrink-0 rounded-full p-2 transition-all duration-300 group-hover:translate-y-[-2px] ${
-              codeself
-                ? "bg-background/20 text-background group-hover:bg-background group-hover:text-accent"
-                : primary
-                  ? "bg-accent/20 text-accent group-hover:bg-accent group-hover:text-background"
-                  : "border border-border text-foreground/50 group-hover:text-foreground"
+      <div className="flex min-w-0 flex-1 items-center gap-3">
+        <span className="shrink-0">
+          <Image
+            src={icon}
+            alt={t(titleKey)}
+            width={hero ? 40 : 36}
+            height={hero ? 40 : 36}
+            className={hero ? "rounded-lg" : "drop-shadow-md"}
+          />
+        </span>
+        <div className="min-w-0">
+          <p
+            className={`truncate font-semibold ${
+              hero ? "text-base text-black" : "text-sm text-base-content"
             }`}
           >
-            <ArrowUpRightIcon className="size-4" />
-          </div>
-        </>
-      )}
+            {t(titleKey)}
+          </p>
+          <p
+            className={`truncate text-xs ${
+              hero ? "text-black/60" : "text-foreground/60"
+            }`}
+          >
+            {t(subtitleKey)}
+          </p>
+        </div>
+      </div>
+
+      <div
+        className={`flex shrink-0 items-center justify-center rounded-full p-2 transition-all duration-300 group-hover:-translate-y-0.5 ${
+          hero
+            ? hero.arrow
+            : "border border-border text-foreground/50 group-hover:text-foreground"
+        }`}
+      >
+        <ArrowUpRightIcon className="size-4" />
+      </div>
     </a>
   );
 }

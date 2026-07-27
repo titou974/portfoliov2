@@ -2,37 +2,24 @@
   "bio": {
     "share": "Partager",
     "username": "@bobodigital_",
-    "tagline": "Je code ce que l'IA ne code pas.",
+    "tagline": "J'intègre et je t'apprends l'IA.",
     "footer": "bobodigital",
-    "stats": {
-      "instagramLabel": "Abonnés Instagram",
-      "tiktokLabel": "Abonnés TikTok",
-      "projectsLabel": "Projets digitaux",
-      "projectsValue": "40+"
-    },
-    "presale": {
-      "title": "Pré-inscription CodeSelf",
-      "subtitle": "Lancement le 31 mai 2026",
-      "badge": "Bientôt"
+    "codeself": {
+      "title": "Découvre CodeSelf",
+      "subtitle": "Deviens un maître de l'IA",
+      "badge": "Nouveau"
     },
     "contact": {
-      "title": "Réserver un RDV",
-      "subtitle": "Discutons de votre projet",
+      "title": "Réserve ton appel",
+      "subtitle": "30 min pour parler de ton projet",
       "badge": "Répond sous 24h"
     },
     "sections": {
-      "activities": "Activités",
-      "videos": "Vidéos"
+      "socials": "Mes réseaux"
     },
-    "activities": {
-      "projects": {
-        "title": "Découvrez mes projets",
-        "subtitle": "Applications, sites & MVPs"
-      },
-      "portfolio": {
-        "title": "Mon portfolio",
-        "subtitle": "Tout mon travail en un coup d'oeil"
-      }
+    "portfolio": {
+      "title": "Mon portfolio",
+      "subtitle": "Tout mon travail en un coup d'oeil"
     },
     "socials": {
       "instagram": {
@@ -51,7 +38,8 @@
         "title": "LinkedIn",
         "subtitle": "Titouan Hirsch"
       }
-    }
+    },
+    "avatarAlt": "Titouan Hirsch — @bobodigital_"
   },
   "navbar": {
     "accueil": "Accueil",

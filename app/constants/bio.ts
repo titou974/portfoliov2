@@ -4,49 +4,18 @@ export interface BioLink {
   titleKey: string;
   subtitleKey: string;
   href: string;
-  primary?: boolean;
-  codeself?: boolean;
+  variant?: "codeself" | "accent";
   badge?: string;
-  image?: string;
 }
 
-export interface BioStat {
-  id: string;
-  icon: string;
-  valueKey: string;
-  labelKey: string;
-}
-
-export const BIO_STATS: BioStat[] = [
-  {
-    id: "instagram",
-    icon: "/creations/instagram.webp",
-    valueKey: "1.1k",
-    labelKey: "bio.stats.instagramLabel",
-  },
-  {
-    id: "tiktok",
-    icon: "/creations/tiktok.webp",
-    valueKey: "2k",
-    labelKey: "bio.stats.tiktokLabel",
-  },
-  {
-    id: "projects",
-    icon: "/creations/projects.png",
-    valueKey: "bio.stats.projectsValue",
-    labelKey: "bio.stats.projectsLabel",
-  },
-];
-
-export const BIO_PRESALE: BioLink = {
-  id: "presale",
+export const BIO_CODESELF: BioLink = {
+  id: "codeself",
   icon: "/logos/codeself.svg",
-  titleKey: "bio.presale.title",
-  subtitleKey: "bio.presale.subtitle",
+  titleKey: "bio.codeself.title",
+  subtitleKey: "bio.codeself.subtitle",
   href: "https://code-self.com",
-  primary: true,
-  codeself: true,
-  image: "/creations/codeself.png",
+  variant: "codeself",
+  badge: "bio.codeself.badge",
 };
 
 export const BIO_CONTACT: BioLink = {
@@ -55,30 +24,18 @@ export const BIO_CONTACT: BioLink = {
   titleKey: "bio.contact.title",
   subtitleKey: "bio.contact.subtitle",
   href: "https://cal.eu/bobodigital",
-  primary: true,
+  variant: "accent",
   badge: "bio.contact.badge",
 };
 
-export const BIO_ACTIVITIES: BioLink[] = [
-  {
-    id: "contact",
-    icon: "/creations/calendar.png",
-    titleKey: "bio.contact.title",
-    subtitleKey: "bio.contact.subtitle",
-    href: "https://cal.eu/bobodigital",
-    primary: true,
-    badge: "bio.contact.badge",
-  },
+export const BIO_SOCIALS: BioLink[] = [
   {
     id: "portfolio",
-    icon: "/creations/plant.png",
-    titleKey: "bio.activities.portfolio.title",
-    subtitleKey: "bio.activities.portfolio.subtitle",
+    icon: "/creations/portfolio.png",
+    titleKey: "bio.portfolio.title",
+    subtitleKey: "bio.portfolio.subtitle",
     href: "https://titouanhirsch.com",
   },
-];
-
-export const BIO_SOCIALS: BioLink[] = [
   {
     id: "instagram",
     icon: "/creations/instagram.webp",
@@ -110,7 +67,7 @@ export const BIO_SOCIALS: BioLink[] = [
 ];
 
 export const PROFILE = {
-  avatar: "/titou.jpeg",
+  avatar: "/titou-bio.jpg",
   username: "bio.username",
   tagline: "bio.tagline",
 } as const;

@@ -1,19 +1,14 @@
 "use client";
 
-import Image from "next/image";
+import { motion } from "framer-motion";
 import { ShareIcon } from "@heroicons/react/16/solid";
 import { t } from "@/lib/strings";
-import {
-  PROFILE,
-  BIO_STATS,
-  BIO_PRESALE,
-  BIO_CONTACT,
-  BIO_ACTIVITIES,
-  BIO_SOCIALS,
-} from "@/app/constants/bio";
+import { fadeUp } from "@/lib/animation";
+import { PROFILE, BIO_CODESELF, BIO_CONTACT, BIO_SOCIALS } from "@/app/constants/bio";
 import LinkCard from "@/components/bio/LinkCard";
-import StatCard from "@/components/bio/StatCard";
 import SectionTitle from "@/components/bio/SectionTitle";
+import NatureBackdrop from "@/components/bio/NatureBackdrop";
+import BioProfile from "@/components/bio/BioProfile";
 
 export default function BioPage() {
   const handleShare = async () => {
@@ -28,90 +23,69 @@ export default function BioPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background px-4 py-8 max-w-md mx-auto">
-      {/* Share */}
-      <div className="flex justify-end mb-4">
-        <button
-          onClick={handleShare}
-          className="flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-foreground/60 hover:text-foreground transition-colors"
-        >
-          <ShareIcon className="size-3.5" />
-          {t("bio.share")}
-        </button>
-      </div>
+    <div className="relative min-h-screen overflow-hidden bg-background">
+      <NatureBackdrop />
 
-      {/* Profile */}
-      <div className="flex flex-col items-center text-center">
-        <div className="rounded-full border-2 border-accent/30 p-1">
-          <Image
-            src={PROFILE.avatar}
-            alt={t(PROFILE.username)}
-            width={96}
-            height={96}
-            className="rounded-full object-cover"
-          />
+      <div className="relative mx-auto max-w-md px-4 py-8">
+        {/* Share */}
+        <div className="mb-4 flex justify-end">
+          <button
+            onClick={handleShare}
+            className="flex items-center gap-1.5 rounded-full border border-border bg-surface/60 px-3 py-1.5 text-xs font-medium text-foreground/60 backdrop-blur-sm transition-colors hover:text-foreground"
+          >
+            <ShareIcon className="size-3.5" />
+            {t("bio.share")}
+          </button>
         </div>
-        <h1 className="mt-4 text-xl font-bold text-base-content">
-          {t(PROFILE.username)}
-        </h1>
-        <p className="mt-1 text-sm text-foreground/70">{t(PROFILE.tagline)}</p>
-      </div>
 
-      {/* Stats */}
-      <div className="flex gap-3 mt-6">
-        {BIO_STATS.map((stat) => (
-          <StatCard
-            key={stat.id}
-            icon={stat.icon}
-            value={t(stat.valueKey)}
-            labelKey={stat.labelKey}
-          />
-        ))}
-      </div>
-      {/* <div className="mt-8">
-        <LinkCard
-          icon={BIO_PRESALE.icon}
-          titleKey={BIO_PRESALE.titleKey}
-          subtitleKey={BIO_PRESALE.subtitleKey}
-          href={BIO_PRESALE.href}
-          primary={BIO_PRESALE.primary}
-          codeself={BIO_PRESALE.codeself}
-          badge={BIO_PRESALE.badge}
-        />
-      </div> */}
-      <SectionTitle title={t("bio.sections.activities")} />
-      <div className="space-y-3">
-        {BIO_ACTIVITIES.map((link) => (
+        {/* Photo + description */}
+        <BioProfile />
+
+        {/* CodeSelf */}
+        <motion.div className="mt-9" {...fadeUp(0.15)}>
           <LinkCard
-            key={link.id}
-            icon={link.icon}
-            titleKey={link.titleKey}
-            subtitleKey={link.subtitleKey}
-            href={link.href}
-            primary={link.primary}
-            badge={link.badge}
+            icon={BIO_CODESELF.icon}
+            titleKey={BIO_CODESELF.titleKey}
+            subtitleKey={BIO_CODESELF.subtitleKey}
+            href={BIO_CODESELF.href}
+            variant={BIO_CODESELF.variant}
+            badge={BIO_CODESELF.badge}
           />
-        ))}
-      </div>
+        </motion.div>
 
-      {/* Vidéos */}
-      <SectionTitle title={t("bio.sections.videos")} />
-      <div className="space-y-3">
-        {BIO_SOCIALS.map((link) => (
+        {/* Réserver un appel */}
+        <motion.div className="mt-5" {...fadeUp(0.25)}>
           <LinkCard
-            key={link.id}
-            icon={link.icon}
-            titleKey={link.titleKey}
-            subtitleKey={link.subtitleKey}
-            href={link.href}
+            icon={BIO_CONTACT.icon}
+            titleKey={BIO_CONTACT.titleKey}
+            subtitleKey={BIO_CONTACT.subtitleKey}
+            href={BIO_CONTACT.href}
+            variant={BIO_CONTACT.variant}
+            badge={BIO_CONTACT.badge}
           />
-        ))}
-      </div>
+        </motion.div>
 
-      {/* Footer */}
-      <p className="mt-10 text-center text-[11px] text-foreground/30">
-        {t("bio.footer")} &copy; {new Date().getFullYear()}
-      </p>
+        {/* Réseaux */}
+        <motion.div {...fadeUp(0.35)}>
+          <SectionTitle title={t("bio.sections.socials")} />
+          <div className="space-y-3">
+            {BIO_SOCIALS.map((link) => (
+              <LinkCard
+                key={link.id}
+                icon={link.icon}
+                titleKey={link.titleKey}
+                subtitleKey={link.subtitleKey}
+                href={link.href}
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Footer */}
+        <p className="mt-10 text-center text-[11px] text-foreground/30">
+          {t("bio.footer")} &copy; {new Date().getFullYear()}
+        </p>
+      </div>
     </div>
   );
 }
