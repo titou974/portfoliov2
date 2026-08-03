@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Bio — @bobodigital_",
     description:
       "Tous les liens de @bobodigital_ : portfolio, réseaux sociaux, réservation et projets.",
-    url: "https://bio.bobodigital.fr",
+    url: "https://bio.titouanhirsch.com",
     images: [
       {
         url: "/bio-meta-image-1200x628.png",
@@ -27,10 +27,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BioLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function BioLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

@@ -14,10 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bobodigital.fr"),
+  metadataBase: new URL("https://titouanhirsch.com"),
   title: {
-    default: "Bobodigital — Développeur Web Freelance & Créateur de contenu",
-    template: "%s | Bobodigital",
+    default:
+      "Titouan Hirsch/ @bobodigital — Développeur Web Freelance & Créateur de contenu",
+    template: "%s | Titouan Hirsch/@bobodigital",
   },
   description:
     "Je donne vie à vos projets digitaux : MVP, applications web, agents IA et design sur-mesure. Je code ce que l'IA ne code pas.",
@@ -31,14 +32,15 @@ export const metadata: Metadata = {
     "bobodigital",
     "Titouan Hirsch",
   ],
-  authors: [{ name: "Titouan Hirsch", url: "https://bobodigital.fr" }],
+  authors: [{ name: "Titouan Hirsch", url: "https://titouanhirsch.com" }],
   creator: "Titouan Hirsch",
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://bobodigital.fr",
-    siteName: "Bobodigital",
-    title: "Bobodigital — Développeur Web Freelance & Créateur de contenu",
+    url: "https://titouanhirsch.com",
+    siteName: "Titouan Hirsch",
+    title:
+      "Titouan Hirsch/ @bobodigital — Développeur Web Freelance & Créateur de contenu",
     description:
       "Je donne vie à vos projets digitaux : MVP, applications web, agents IA et design sur-mesure.",
     images: [
@@ -52,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bobodigital — Développeur Web Freelance",
+    title: "Titouan Hirsch/ @bobodigital — Développeur Web Freelance",
     description:
       "Je donne vie à vos projets digitaux : MVP, applications web, agents IA et design sur-mesure.",
     images: ["/site-meta-image-1200x628.png"],
