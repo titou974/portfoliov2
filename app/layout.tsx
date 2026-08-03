@@ -43,19 +43,19 @@ export const metadata: Metadata = {
       "Je donne vie à vos projets digitaux : MVP, applications web, agents IA et design sur-mesure.",
     images: [
       {
-        url: "/titou.jpeg",
-        width: 512,
-        height: 512,
+        url: "/site-meta-image-1200x628.png",
+        width: 1200,
+        height: 628,
         alt: "Titouan Hirsch — Bobodigital",
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Bobodigital — Développeur Web Freelance",
     description:
       "Je donne vie à vos projets digitaux : MVP, applications web, agents IA et design sur-mesure.",
-    images: ["/titou.jpeg"],
+    images: ["/site-meta-image-1200x628.png"],
   },
   robots: {
     index: true,

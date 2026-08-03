@@ -11,19 +11,19 @@ export const metadata: Metadata = {
     url: "https://bio.bobodigital.fr",
     images: [
       {
-        url: "/titou-bio.jpg",
-        width: 800,
-        height: 800,
+        url: "/bio-meta-image-1200x628.png",
+        width: 1200,
+        height: 628,
         alt: "@bobodigital_ — Bio",
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Bio — @bobodigital_",
     description:
       "Tous les liens de @bobodigital_ : portfolio, réseaux sociaux, réservation et projets.",
-    images: ["/titou-bio.jpg"],
+    images: ["/bio-meta-image-1200x628.png"],
   },
 };
 
