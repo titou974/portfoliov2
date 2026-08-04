@@ -172,10 +172,12 @@ export default function SovereigntySection() {
       />
 
       {/* Le fond de page prend la couleur de la carte : elle cesse d'être une
-          carte posée sur la page, la page devient la section. */}
+          carte posée sur la page, la page devient la section. À partir de `md`
+          seulement — sur téléphone la carte occupe déjà toute la largeur, le
+          basculement n'ajoutait rien et alourdissait le scroll. */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none fixed inset-0 -z-10 bg-base-content transition-opacity duration-700 ease-out ${
+        className={`pointer-events-none fixed inset-0 -z-10 hidden bg-base-content transition-opacity duration-700 ease-out md:block ${
           backdropActive ? "opacity-100" : "opacity-0"
         }`}
       />
