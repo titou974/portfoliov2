@@ -8,76 +8,83 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import Image from "next/image";
-import { ArrowUpRightIcon } from "@heroicons/react/16/solid";
 import strings from "@/app/constants/strings.fr.json";
+import { SectionHeading } from "@/components/SectionWrapper";
 
 interface Project {
   name: string;
+  role: string;
   phonePreview?: string;
   secondPhonePreview?: string;
   laptopPreview?: string;
   logo: string;
-  testimonial: { text: string; author: string; role: string };
+  /** Citation client, quand il y en a une. */
+  testimonial?: string;
+  /** Note de projet, quand la preuve est le livrable et non un témoignage. */
+  note?: string;
+  author: string;
+  authorRole?: string;
 }
+
+const p = strings.creations.projects;
 
 const projects: Project[] = [
   {
-    name: strings.creations.projects.kesselMedia.name,
+    name: p.codeself.name,
+    role: p.codeself.role,
+    laptopPreview: "/creations/codeself.png",
+    logo: "/logos/codeself.svg",
+    note: p.codeself.note,
+    author: p.codeself.author,
+    authorRole: p.codeself.authorRole,
+  },
+  {
+    name: p.kesselMedia.name,
+    role: p.kesselMedia.role,
     phonePreview: "/creations/kesselmediaphone.webp",
     laptopPreview: "/creations/kesselmedia2laptop.webp",
     logo: "/logos/logo_kessel.webp",
-    testimonial: {
-      text: strings.creations.projects.kesselMedia.testimonial,
-      author: strings.creations.projects.kesselMedia.author,
-      role: strings.creations.projects.kesselMedia.role,
-    },
+    testimonial: p.kesselMedia.testimonial,
+    author: p.kesselMedia.author,
   },
   {
-    name: strings.creations.projects.pulseAI.name,
+    name: p.pulseAI.name,
+    role: p.pulseAI.role,
     phonePreview: "/creations/pulseai-phone.png",
     secondPhonePreview: "/creations/pulseai-phone2.png",
     logo: "/logos/logo_pulseia.png",
-    testimonial: {
-      text: strings.creations.projects.pulseAI.testimonial,
-      author: strings.creations.projects.pulseAI.author,
-      role: strings.creations.projects.pulseAI.role,
-    },
+    testimonial: p.pulseAI.testimonial,
+    author: p.pulseAI.author,
   },
   {
-    name: strings.creations.projects.nestor.name,
+    name: p.nestor.name,
+    role: p.nestor.role,
     phonePreview: "/creations/nestorphone.webp",
     secondPhonePreview: "/creations/nestor-phone2.png",
     logo: "/logos/logo-nestor.svg",
-    testimonial: {
-      text: strings.creations.projects.nestor.testimonial,
-      author: strings.creations.projects.nestor.author,
-      role: strings.creations.projects.nestor.role,
-    },
+    testimonial: p.nestor.testimonial,
+    author: p.nestor.author,
   },
   {
-    name: strings.creations.projects.bourbonAcademy.name,
+    name: p.bourbonAcademy.name,
+    role: p.bourbonAcademy.role,
     phonePreview: "/creations/bourbonacademy-phone.png",
     laptopPreview: "/creations/bourbonacademy-desktop.png",
     logo: "/logos/logo_bourbon.jpg",
-    testimonial: {
-      text: strings.creations.projects.bourbonAcademy.testimonial,
-      author: strings.creations.projects.bourbonAcademy.author,
-      role: strings.creations.projects.bourbonAcademy.role,
-    },
+    testimonial: p.bourbonAcademy.testimonial,
+    author: p.bourbonAcademy.author,
   },
   {
-    name: strings.creations.projects.weDive.name,
+    name: p.weDive.name,
+    role: p.weDive.role,
     laptopPreview: "/creations/wedivelaptop.webp",
     logo: "/logos/logo-wedive.png",
-    testimonial: {
-      text: strings.creations.projects.weDive.testimonial,
-      author: strings.creations.projects.weDive.author,
-      role: strings.creations.projects.weDive.role,
-    },
+    testimonial: p.weDive.testimonial,
+    author: p.weDive.author,
   },
 ];
 
-/* ── Mockup components ─────────────────────────────────────────────── */
+/* ── Mockups ───────────────────────────────────────────────────────── */
 
 function PhoneMockup({
   src,
@@ -93,15 +100,14 @@ function PhoneMockup({
         alt=""
         width={200}
         height={400}
-        className="relative z-20 w-full h-auto"
-        priority
+        className="relative z-20 h-auto w-full"
       />
       <Image
         src={src}
         alt=""
         width={180}
         height={380}
-        className="absolute top-[3%] left-[8%] w-[84%] h-[94%] object-cover rounded-[8%] z-10"
+        className="absolute top-[3%] left-[8%] z-10 h-[94%] w-[84%] rounded-[8%] object-cover"
       />
     </div>
   );
@@ -121,15 +127,14 @@ function LaptopMockup({
         alt=""
         width={500}
         height={320}
-        className="relative z-20 w-full h-auto"
-        priority
+        className="relative z-20 h-auto w-full"
       />
       <Image
         src={src}
         alt=""
         width={350}
         height={200}
-        className="absolute top-[7%] left-[15%] w-[70%] h-[62%] object-cover rounded-sm z-10"
+        className="absolute top-[7%] left-[15%] z-10 h-[62%] w-[70%] rounded-sm object-cover object-top"
       />
     </div>
   );
@@ -145,11 +150,11 @@ function MockupDisplay({ project }: { project: Project }) {
       <div className="relative flex items-end justify-center">
         <LaptopMockup
           src={project.laptopPreview!}
-          className="w-52 md:w-72 lg:w-80"
+          className="w-56 md:w-72 lg:w-80"
         />
         <PhoneMockup
           src={project.phonePreview!}
-          className="w-14 md:w-20 lg:w-22 absolute -right-2 md:-right-4 bottom-1 md:bottom-2 z-30"
+          className="absolute -right-2 bottom-1 z-30 w-14 md:-right-4 md:bottom-2 md:w-20 lg:w-22"
         />
       </div>
     );
@@ -157,14 +162,14 @@ function MockupDisplay({ project }: { project: Project }) {
 
   if (hasTwoPhones) {
     return (
-      <div className="flex items-center justify-center gap-2 md:gap-5">
+      <div className="flex items-center justify-center gap-3 md:gap-5">
         <PhoneMockup
           src={project.phonePreview!}
-          className="w-20 md:w-26 lg:w-28 -rotate-6"
+          className="w-20 -rotate-6 md:w-26 lg:w-28"
         />
         <PhoneMockup
           src={project.secondPhonePreview!}
-          className="w-20 md:w-26 lg:w-28 rotate-6"
+          className="w-20 rotate-6 md:w-26 lg:w-28"
         />
       </div>
     );
@@ -186,7 +191,7 @@ function MockupDisplay({ project }: { project: Project }) {
       <div className="flex justify-center">
         <LaptopMockup
           src={project.laptopPreview!}
-          className="w-52 md:w-72 lg:w-80"
+          className="w-56 md:w-72 lg:w-80"
         />
       </div>
     );
@@ -195,10 +200,9 @@ function MockupDisplay({ project }: { project: Project }) {
   return null;
 }
 
-/* ── Main section ──────────────────────────────────────────────────── */
+/* ── Section ───────────────────────────────────────────────────────── */
 
-const LINE =
-  "before:absolute before:w-screen before:border-[0.5px] before:border-border before:inset-x-0 before:left-1/2 before:-translate-x-1/2 before:opacity-60 before:top-[-2px] after:absolute after:w-screen after:border-[0.5px] after:border-border after:inset-x-0 after:left-1/2 after:-translate-x-1/2 after:opacity-60 after:bottom-[-2px]";
+const TRANSITION = { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] } as const;
 
 export default function CreationsSection({
   title,
@@ -219,117 +223,149 @@ export default function CreationsSection({
   useMotionValueEvent(scrollYProgress, "change", (progress) => {
     const total = projects.length;
     const scaled = progress * total;
-    const index = Math.min(Math.floor(scaled), total - 1);
+    const index = Math.min(Math.max(Math.floor(scaled), 0), total - 1);
     setActiveIndex(index);
-    setSegmentProgress(Math.min(scaled - index, 1));
+    setSegmentProgress(Math.min(Math.max(scaled - index, 0), 1));
   });
 
   const project = projects[activeIndex];
+  const counter = `${String(activeIndex + 1).padStart(2, "0")} / ${String(
+    projects.length,
+  ).padStart(2, "0")}`;
 
   return (
-    <section ref={containerRef} className="relative mt-16 h-[400vh] md:px-6">
-      <div className="sticky top-0 flex h-dvh flex-col items-center justify-center">
-        {/* Section title — same style as SectionWrapper */}
-        <div className="mb-10 md:mb-16 text-center space-y-4">
-          <h2
-            className={`relative text-lg font-semibold text-base-content md:text-3xl tracking-tight ${LINE}`}
-          >
-            {title}
-          </h2>
-          <p
-            className={`relative mt-2 text-sm text-foreground md:text-base ${LINE}`}
-          >
-            {subtitle}
-          </p>
+    <section
+      ref={containerRef}
+      id="creations"
+      /* Un écran de scroll par projet : la hauteur de la piste dépend du
+         nombre de projets, jamais de la longueur des textes. */
+      className="relative mt-20 h-[560vh] md:mt-28 md:px-6"
+    >
+      <div className="sticky top-0 flex h-dvh flex-col items-center justify-center px-4 md:px-0">
+        <div className="mb-8 text-center md:mb-12">
+          <SectionHeading title={title} subtitle={subtitle} />
         </div>
 
-        <div className="w-full max-w-2xl mx-auto px-4 md:px-0">
-          <div className="group relative overflow-hidden rounded-2xl border border-neutral bg-surface p-6 pt-14 md:p-10 md:pt-16 min-h-[340px] md:min-h-[420px] flex flex-col items-center justify-center">
-            <div className="absolute top-4 right-4 bg-accent/20 border-border text-accent group-hover:bg-accent group-hover:text-background group-hover:translate-y-[-2px] transition-all duration-300 rounded-full p-2">
-              <ArrowUpRightIcon className="size-6" />
-            </div>
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={project.name}
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.3 }}
-                className="absolute top-4 left-4 md:top-6 md:left-6 border border-border text-foreground text-xs font-semibold p-1 rounded-lg"
-                src={project.logo}
-                alt={project.name + " Logo"}
-                width={40}
-                height={40}
-              />
-            </AnimatePresence>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0, x: 80, scale: 0.95 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={{ opacity: 0, x: -80, scale: 0.95 }}
-                transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="flex-1 flex items-center justify-center"
-              >
-                <MockupDisplay project={project} />
-              </motion.div>
-            </AnimatePresence>
+        <div className="mx-auto w-full max-w-2xl">
+          {/* Scène — hauteur figée */}
+          <div className="relative flex h-[300px] flex-col overflow-hidden rounded-2xl border border-border bg-surface md:h-[400px]">
+            <span
+              aria-hidden="true"
+              className="hatch pointer-events-none absolute inset-0 opacity-50"
+            />
 
-            {/* Progress dots */}
-            <div className="flex items-center gap-2 mt-6">
-              {projects.map((_, i) => (
-                <div key={i} className="p-1">
-                  <span
-                    className={`block rounded-full transition-all duration-300 overflow-hidden ${
-                      i === activeIndex
-                        ? "w-6 h-2 bg-accent/30"
-                        : i < activeIndex
-                          ? "w-2 h-2 bg-accent"
-                          : "w-2 h-2 bg-foreground/20"
-                    }`}
+            {/* Bandeau : identité du projet + position dans la série */}
+            <div className="relative z-10 flex items-center justify-between gap-3 border-b border-border/70 bg-surface/80 px-4 py-3 backdrop-blur-sm md:px-5">
+              <div className="flex min-w-0 items-center gap-3">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={project.name}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.25 }}
+                    className="flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border bg-background p-1"
                   >
-                    {i === activeIndex && (
-                      <span
-                        className="block h-full bg-accent rounded-full transition-[width] duration-100"
-                        style={{ width: `${segmentProgress * 100}%` }}
-                      />
-                    )}
-                  </span>
+                    <Image
+                      src={project.logo}
+                      alt=""
+                      width={28}
+                      height={28}
+                      className="h-full w-full object-contain"
+                    />
+                  </motion.span>
+                </AnimatePresence>
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-semibold text-base-content">
+                    {project.name}
+                  </p>
+                  <p className="truncate text-xs text-foreground/60">
+                    {project.role}
+                  </p>
                 </div>
+              </div>
+              <span className="label-mono shrink-0 text-foreground/45">
+                {counter}
+              </span>
+            </div>
+
+            {/* Mockup */}
+            <div className="relative z-[1] flex min-h-0 flex-1 items-center justify-center px-4 py-4">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, x: 60, scale: 0.96 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: -60, scale: 0.96 }}
+                  transition={TRANSITION}
+                  className="flex h-full w-full items-center justify-center"
+                >
+                  <MockupDisplay project={project} />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Progression */}
+            <div className="relative z-10 flex items-center justify-center gap-1.5 border-t border-border/70 bg-surface/80 py-3 backdrop-blur-sm">
+              {projects.map((item, i) => (
+                <span
+                  key={item.name}
+                  className={`block overflow-hidden rounded-full transition-all duration-300 ${
+                    i === activeIndex
+                      ? "h-1.5 w-7 bg-accent/25"
+                      : i < activeIndex
+                        ? "h-1.5 w-1.5 bg-accent"
+                        : "h-1.5 w-1.5 bg-foreground/20"
+                  }`}
+                >
+                  {i === activeIndex && (
+                    <span
+                      className="block h-full rounded-full bg-accent transition-[width] duration-100"
+                      style={{ width: `${segmentProgress * 100}%` }}
+                    />
+                  )}
+                </span>
               ))}
             </div>
           </div>
 
-          {/* Testimonial card */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="mt-4 p-5 rounded-xl border border-neutral bg-surface"
-            >
-              <div className="flex items-start gap-3">
-                <span className="text-accent text-2xl leading-none select-none">
-                  &ldquo;
-                </span>
-                <div className="flex-1">
-                  <p className="text-sm leading-relaxed text-foreground">
-                    {project.testimonial.text}
+          {/* Preuve — hauteur figée elle aussi, sinon la page ripe au scroll */}
+          <div className="relative mt-3 h-[168px] overflow-hidden rounded-xl border border-border bg-surface md:h-[150px]">
+            <AnimatePresence mode="wait">
+              <motion.figure
+                key={activeIndex}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35 }}
+                className="absolute inset-0 m-0 flex flex-col justify-center p-5"
+              >
+                <blockquote className="flex gap-2.5">
+                  {project.testimonial && (
+                    <span
+                      aria-hidden="true"
+                      className="text-2xl leading-none text-accent select-none"
+                    >
+                      &ldquo;
+                    </span>
+                  )}
+                  <p className="line-clamp-4 text-sm leading-relaxed text-foreground">
+                    {project.testimonial ?? project.note}
                   </p>
-                  <div className="mt-3">
-                    <p className="text-xs font-semibold text-base-content">
-                      {project.testimonial.author}
-                    </p>
-                    <p className="text-xs text-foreground/50">
-                      {project.testimonial.role}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                </blockquote>
+                <figcaption className="mt-3 flex items-baseline gap-2 border-t border-border/70 pt-3">
+                  <span className="text-xs font-semibold text-base-content">
+                    {project.author}
+                  </span>
+                  {project.authorRole && (
+                    <span className="label-mono truncate text-foreground/45">
+                      {project.authorRole}
+                    </span>
+                  )}
+                </figcaption>
+              </motion.figure>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>

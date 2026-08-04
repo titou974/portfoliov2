@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import {
   motion,
   useScroll,
@@ -11,7 +11,7 @@ import {
 import Image from "next/image";
 import Lottie, { type LottieRefCurrentProps } from "lottie-react";
 import orbe from "../../assets/orbe.json";
-import { ArrowUpRightIcon } from "@heroicons/react/16/solid";
+import { ArrowDownIcon, LockClosedIcon } from "@heroicons/react/16/solid";
 import strings from "@/app/constants/strings.fr.json";
 
 const problems = [
@@ -40,6 +40,51 @@ const problems = [
     description: strings.problems.scalable.description,
   },
 ];
+
+const privateAi = strings.problems.privateAi;
+
+/* ── Carte phare : l'IA privée ─────────────────────────────────────── */
+
+function PrivateAiCard() {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  return (
+    <motion.a
+      ref={ref}
+      href="#ia-privee"
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="group relative mb-8 flex flex-col gap-5 overflow-hidden rounded-2xl border border-accent/30 bg-surface p-5 pr-14 transition-colors hover:border-accent/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:mb-12 md:flex-row md:items-center md:gap-8 md:p-8 md:pr-20"
+    >
+      {/* Bande hachurée : la marge du périmètre */}
+      <span
+        aria-hidden="true"
+        className="hatch hatch-accent pointer-events-none absolute inset-y-0 right-0 w-10 border-l border-accent/25 md:w-12"
+      />
+
+      <span className="relative flex size-12 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent ring-1 ring-accent/25">
+        <LockClosedIcon className="size-5" />
+      </span>
+
+      <div className="relative flex-1">
+        <p className="label-mono text-accent">{privateAi.subtitle}</p>
+        <h3 className="mt-1.5 text-lg font-semibold text-base-content md:text-xl">
+          {privateAi.title}
+        </h3>
+        <p className="mt-2 max-w-xl text-sm leading-relaxed text-foreground">
+          {privateAi.description}
+        </p>
+      </div>
+
+      <span className="relative flex items-center gap-2 text-sm font-medium text-accent md:shrink-0">
+        {privateAi.cta}
+        <ArrowDownIcon className="size-4 transition-transform group-hover:translate-y-0.5" />
+      </span>
+    </motion.a>
+  );
+}
 
 /* ── Mobile card — scroll-linked activation ───────────────────────── */
 
@@ -76,9 +121,13 @@ function MobileCard({
     <>
       <div className="relative z-[2]">
         {/* Base card */}
-        <div className="rounded-xl border border-neutral bg-surface p-5">
+        <div className="relative overflow-hidden rounded-xl border border-border bg-surface p-5">
+          <span
+            aria-hidden="true"
+            className="hatch pointer-events-none absolute -top-6 -right-6 size-16 rotate-12 opacity-40"
+          />
           {/* Icon with accent overlay + circle bg transition */}
-          <span className="relative inline-flex items-center justify-center rounded-full w-10 h-10">
+          <span className="relative inline-flex h-10 w-10 items-center justify-center rounded-full">
             <span className="absolute inset-0 rounded-full bg-muted/20" />
             <motion.span
               className="absolute inset-0 rounded-full bg-accent"
@@ -86,28 +135,28 @@ function MobileCard({
             />
             <Image
               src={problem.icon}
-              alt={problem.title}
+              alt=""
               width={24}
               height={24}
               className="relative z-[1]"
             />
           </span>
 
-          <h3 className="mt-2 text-base font-semibold text-base-content">
+          <h3 className="mt-3 text-base font-semibold text-base-content">
             {problem.title}
           </h3>
-          <div className="relative">
+          <div className="relative mt-1 h-4">
             <motion.p
-              className="absolute mt-0.5 text-xs font-medium text-accent"
+              className="absolute text-xs font-medium text-accent"
               style={{ opacity: progress }}
             >
               {problem.subtitle}
             </motion.p>
-            <p className="absolute mt-0.5 text-xs font-medium text-accent/40">
+            <p className="absolute text-xs font-medium text-accent/40">
               {problem.subtitle}
             </p>
           </div>
-          <p className="mt-6 text-xs leading-relaxed text-foreground">
+          <p className="mt-4 text-xs leading-relaxed text-foreground">
             {problem.description}
           </p>
         </div>
@@ -121,7 +170,7 @@ function MobileCard({
 
       {/* Connector line to next card */}
       {!isLast && (
-        <div className="relative mx-auto h-16 w-px bg-neutral">
+        <div className="relative mx-auto h-16 w-px bg-border">
           <motion.div
             className="absolute inset-0 origin-top bg-accent"
             style={{ scaleY: lineProgress }}
@@ -132,51 +181,42 @@ function MobileCard({
   );
 }
 
-/* ── Desktop card — with connecting line via group-hover ───────────── */
-
-const LINE_CONFIGS = [
-  // Card 0 (top-left): line from right edge → down-right toward center
-  "bottom-0 left-full origin-left rotate-[45deg] lg:rotate-[17deg] bg-gradient-to-r",
-  // Card 1 (top-right): line from left edge → down-left toward center
-  "bottom-0 right-full origin-right -rotate-[45deg] lg:-rotate-[17deg] bg-gradient-to-l",
-  // Card 2 (bottom-left): line from right edge → up-right toward center
-  "top-0 left-full origin-left -rotate-[45deg] lg:-rotate-[17deg] bg-gradient-to-r",
-  // Card 3 (bottom-right): line from left edge → up-left toward center
-  "top-0 right-full origin-right rotate-[45deg] lg:rotate-[17deg] bg-gradient-to-l",
-];
+/* ── Desktop card ─────────────────────────────────────────────────── */
 
 function DesktopCard({
   problem,
   delay,
   inView,
-  index,
   onHover,
 }: {
   problem: (typeof problems)[number];
   delay: number;
   inView: boolean;
-  index: number;
   onHover: (hovered: boolean) => void;
 }) {
   return (
     <motion.div
-      className="relative z-[1] overflow-visible rounded-xl border border-neutral bg-surface p-6 group h-full"
+      className="group relative z-[1] h-full overflow-hidden rounded-xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40"
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
       onHoverStart={() => onHover(true)}
       onHoverEnd={() => onHover(false)}
     >
+      <span
+        aria-hidden="true"
+        className="hatch pointer-events-none absolute -top-8 -right-8 size-24 rotate-12 opacity-40 transition-opacity duration-300 group-hover:opacity-70"
+      />
       <motion.div
         className="pointer-events-none absolute inset-0 rounded-xl border-2 border-accent/40"
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: [0, 0.7, 0] } : {}}
         transition={{ duration: 1.8, delay: delay + 1.2, ease: "easeInOut" }}
       />
-      <span className="relative inline-flex items-center justify-center bg-muted/20 rounded-full w-12 h-12">
+      <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-full bg-muted/20">
         <Image
           src={problem.icon}
-          alt={problem.title}
+          alt=""
           width={30}
           height={30}
           className="relative z-[1]"
@@ -189,11 +229,13 @@ function DesktopCard({
         />
       </span>
 
-      <h3 className="mt-3 text-lg font-semibold text-base-content">
+      <h3 className="relative mt-3 text-lg font-semibold text-base-content">
         {problem.title}
       </h3>
-      <p className="mt-1 text-sm font-medium text-accent">{problem.subtitle}</p>
-      <p className="mt-3 text-sm leading-relaxed text-foreground">
+      <p className="relative mt-1 text-sm font-medium text-accent">
+        {problem.subtitle}
+      </p>
+      <p className="relative mt-3 text-sm leading-relaxed text-foreground">
         {problem.description}
       </p>
     </motion.div>
@@ -216,10 +258,8 @@ export default function ProblemsSection() {
 
   // Lottie: play only when hovering a card
   const lottieRef = useRef<LottieRefCurrentProps>(null);
-  const [cardHovered, setCardHovered] = useState(false);
 
   const handleCardHover = (hovered: boolean) => {
-    setCardHovered(hovered);
     if (hovered) {
       lottieRef.current?.play();
     } else {
@@ -232,17 +272,21 @@ export default function ProblemsSection() {
   const avatarOpacity = useTransform(scrollYProgress, [0, 0.03], [0, 1]);
 
   return (
-    <>
+    <div className="px-4 md:px-0">
+      <PrivateAiCard />
+
       {/* ── Mobile layout ── */}
-      <div ref={mobileRef} className="relative px-4 md:hidden">
+      <div ref={mobileRef} className="relative md:hidden">
         {/* Avatar following the line */}
         <motion.div
           className="absolute left-1/2 z-[1] -translate-x-1/2"
           style={{ top: avatarTop, opacity: avatarOpacity }}
         >
-          <img
-            src="/titou.jpeg"
+          <Image
+            src="/titou-bio.jpg"
             alt=""
+            width={32}
+            height={32}
             className="size-8 rounded-full border-2 border-accent object-cover shadow-sm"
           />
         </motion.div>
@@ -257,6 +301,7 @@ export default function ProblemsSection() {
           />
         ))}
       </div>
+
       {/* ── Desktop layout ── */}
       <div ref={desktopRef} className="relative hidden md:block">
         {/* Lottie at center */}
@@ -265,7 +310,7 @@ export default function ProblemsSection() {
             lottieRef={lottieRef}
             animationData={orbe}
             autoplay={false}
-            className="w-24 h-24 xl:w-36 xl:h-36"
+            className="h-24 w-24 xl:h-36 xl:w-36"
           />
         </div>
 
@@ -276,14 +321,12 @@ export default function ProblemsSection() {
               problem={problems[0]}
               delay={0.15}
               inView={desktopInView}
-              index={0}
               onHover={handleCardHover}
             />
             <DesktopCard
               problem={problems[2]}
               delay={0.45}
               inView={desktopInView}
-              index={2}
               onHover={handleCardHover}
             />
           </div>
@@ -292,19 +335,17 @@ export default function ProblemsSection() {
               problem={problems[1]}
               delay={0.3}
               inView={desktopInView}
-              index={1}
               onHover={handleCardHover}
             />
             <DesktopCard
               problem={problems[3]}
               delay={0.6}
               inView={desktopInView}
-              index={3}
               onHover={handleCardHover}
             />
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

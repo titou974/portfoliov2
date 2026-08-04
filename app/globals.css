@@ -5,6 +5,13 @@
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Tokens utilisés dans le markup mais absents du thème HeroUI :
+     sans ces alias, `text-base-content` / `border-neutral` / `bg-neutral`
+     étaient des classes inconnues et tombaient silencieusement. */
+  --color-base-content: var(--base-content);
+  --color-neutral: var(--border);
+  --color-ink: var(--base-content);
 }
 
 .gradient-container {
@@ -18,5 +25,56 @@
       var(--color-accent) 0,
       transparent 100%
     );
+  }
+}
+
+/*
+ * Hachures diagonales — le motif structurel du site.
+ * Il marque partout la même chose : une zone de bordure, hors du flux du
+ * contenu. Gouttières de page, marges de cartes, périmètre d'infrastructure.
+ * `--hatch-fg` pilote la couleur, `--hatch-size` la densité.
+ */
+.hatch {
+  --hatch-fg: color-mix(in srgb, var(--color-base-content) 12%, transparent);
+  --hatch-size: 10px;
+  background-image: repeating-linear-gradient(
+    315deg,
+    var(--hatch-fg) 0,
+    var(--hatch-fg) 1px,
+    transparent 0,
+    transparent 50%
+  );
+  background-size: var(--hatch-size) var(--hatch-size);
+}
+
+.hatch-fixed {
+  background-attachment: fixed;
+}
+
+/* Variante sur fond sombre (section souveraineté) */
+.hatch-invert {
+  --hatch-fg: color-mix(in srgb, white 14%, transparent);
+}
+
+.hatch-accent {
+  --hatch-fg: color-mix(in srgb, var(--color-accent) 45%, transparent);
+}
+
+/* Interlignage serré et chasse fixe pour les libellés techniques */
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

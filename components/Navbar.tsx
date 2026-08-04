@@ -1,8 +1,5 @@
 "use client";
 
-import { ArrowUpRightIcon } from "@heroicons/react/16/solid";
-import { t } from "@/lib/strings";
-
 function LinkedInIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -35,68 +32,60 @@ function GitHubIcon({ className }: { className?: string }) {
   );
 }
 
+const SOCIALS = [
+  {
+    label: "Instagram",
+    handle: "@bobodigital_",
+    href: "https://www.instagram.com/bobodigital_",
+    Icon: InstagramIcon,
+  },
+  {
+    label: "TikTok",
+    handle: "@bobodigital_",
+    href: "https://www.tiktok.com/@bobodigital_",
+    Icon: TikTokIcon,
+  },
+  {
+    label: "LinkedIn",
+    handle: "Titouan Hirsch",
+    href: "https://www.linkedin.com/in/titouan-hirsch/",
+    Icon: LinkedInIcon,
+  },
+  {
+    label: "GitHub",
+    handle: "titou974",
+    href: "https://github.com/titou974",
+    Icon: GitHubIcon,
+  },
+] as const;
+
 export default function Navbar() {
   return (
-    <nav className="relative z-40 w-full hidden md:block">
-      <header className="relative flex h-12 items-center px-4 md:px-6 max-w-6xl mx-auto">
-        {/* <div className="absolute left-1/2 -translate-x-1/2 flex items-center rounded-full border border-border">
-          <a
-            href="#accueil"
-            className="px-3 md:px-4 py-1 text-xs md:text-sm font-medium text-foreground/70 hover:text-foreground transition-colors rounded-l-full"
-          >
-            {t("navbar.accueil")}
-          </a>
-          <a
-            href="#projets"
-            className="px-3 md:px-4 py-1 text-xs md:text-sm font-medium text-foreground/70 hover:text-foreground transition-colors border-x border-border"
-          >
-            {t("navbar.projets")}
-          </a>
-          <a
-            href="#videos"
-            className="px-3 md:px-4 py-1 text-xs md:text-sm font-medium text-foreground/70 hover:text-foreground transition-colors border-r border-border"
-          >
-            {t("navbar.videos")}
-          </a>
-          <a
-            href="#reserver"
-            className="flex items-center gap-1 px-3 md:px-4 py-1 text-xs md:text-sm font-medium text-accent bg-accent/10 hover:bg-accent/20 transition-colors rounded-r-full"
-          >
-            {t("navbar.contact")}
-            <ArrowUpRightIcon className="size-3" />
-          </a>
-        </div> */}
-        <div className="hidden md:flex items-center rounded-full border border-border divide-x divide-border ml-auto">
-          <a
-            href="#"
-            aria-label="LinkedIn"
-            className="p-1.5 text-foreground/60 hover:text-foreground transition-colors first:rounded-l-full"
-          >
-            <LinkedInIcon className="size-3.5" />
-          </a>
-          <a
-            href="#"
-            aria-label="Instagram"
-            className="p-1.5 text-foreground/60 hover:text-foreground transition-colors"
-          >
-            <InstagramIcon className="size-3.5" />
-          </a>
-          <a
-            href="#"
-            aria-label="TikTok"
-            className="p-1.5 text-foreground/60 hover:text-foreground transition-colors"
-          >
-            <TikTokIcon className="size-3.5" />
-          </a>
-          <a
-            href="#"
-            aria-label="GitHub"
-            className="p-1.5 text-foreground/60 hover:text-foreground transition-colors last:rounded-r-full"
-          >
-            <GitHubIcon className="size-3.5" />
-          </a>
-        </div>
-      </header>
+    <nav
+      aria-label="Réseaux sociaux"
+      className="relative z-40 flex h-14 w-full justify-center items-center gap-3 px-1 md:h-16 md:gap-5"
+    >
+      {/* Filets rejoignant les gouttières de la page */}
+      <span aria-hidden="true" className="h-px flex-1 md:max-w-24 bg-border" />
+
+      <ul className="flex items-center divide-x divide-border overflow-hidden rounded-full border border-border bg-surface/80 backdrop-blur-sm">
+        {SOCIALS.map(({ label, handle, href, Icon }) => (
+          <li key={label}>
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`${label} — ${handle}`}
+              aria-label={`${label} — ${handle}`}
+              className="flex items-center gap-2 px-3 py-2 text-foreground/60 transition-colors hover:bg-accent/10 hover:text-accent focus-visible:bg-accent/10 focus-visible:text-accent focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent md:cursor-none"
+            >
+              <Icon className="size-4" />
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <span aria-hidden="true" className="h-px flex-1 bg-border md:max-w-24" />
     </nav>
   );
 }

@@ -64,6 +64,7 @@
       "Parcours utilisateur,",
       "Automatisation,",
       "Agent IA,",
+      "IA privée,",
       "Projet tech,"
     ]
   },
@@ -71,6 +72,14 @@
     "problems": {
       "title": "Je crée ce que l'IA ne peut pas coder",
       "subtitle": "Plus qu'un simple développeur, j'apporte une vision produit que seul l'humain peut concevoir."
+    },
+    "content": {
+      "title": "J'enseigne ce que l'IA ne fait pas",
+      "subtitle": "Chaque semaine, je publie sur l'IA et la tech sous le nom @bobodigital_."
+    },
+    "sovereignty": {
+      "title": "J'implémente l'IA dans les entreprises et je leur transmets les bonnes pratiques",
+      "subtitle": "La deuxième partie compte autant que la première : un outil que personne ne sait utiliser ne produit rien. Je livre les deux."
     },
     "creations": {
       "title": "Mes créations préférées",
@@ -86,13 +95,19 @@
     }
   },
   "problems": {
+    "privateAi": {
+      "title": "Modèle d'IA privé",
+      "subtitle": "Vos données ne sortent pas",
+      "description": "J'installe des modèles open source sur vos machines ou sur un serveur que vous possédez, et je forme vos équipes à s'en servir au quotidien.",
+      "cta": "Voir comment ça marche"
+    },
     "mvp": {
       "title": "Lancement MVP",
       "subtitle": "Validez votre idée rapidement",
       "description": "Développement express de votre MVP (max. 2 mois) pour tester votre marché et convaincre vos premiers utilisateurs."
     },
     "refonte": {
-      "title": "Refonte & Debug de votre app codé par l'IA",
+      "title": "Refonte & debug de votre app codée par l'IA",
       "subtitle": "Reprenez le contrôle de votre app",
       "description": "Votre app générée par IA bugge ou manque de solidité ? Je la restructure pour en faire un produit fiable et maintenable."
     },
@@ -102,36 +117,153 @@
       "description": "Création d'agents intelligents qui prennent en charge vos tâches répétitives et boostent votre productivité."
     },
     "scalable": {
-      "title": "App Scalable",
+      "title": "App scalable",
       "subtitle": "Construisez pour des millions",
       "description": "Architecture robuste conçue pour supporter des centaines de milliers d'utilisateurs sans compromis sur la performance."
     }
   },
+  "sovereignty": {
+    "eyebrow": "L'offre",
+    "quote": "L'IA, c'est comme le cheval de Troie : on sait que les Grecs sont à l'intérieur.",
+    "context": "Chaque prompt que vos équipes envoient à Claude, ChatGPT ou autre modèle d'IA part sur des serveurs que vous ne contrôlez pas. Pour des données non sensibles, ça passe. Pour vos contrats, rapports de R&D, idées en or... c'est un problème parce que non seulement ces entreprises récupère et entraine leur modèle sur ces données, et vos datas se retrouvent dans la main de n'importe qui... ",
+    "diagram": {
+      "outsideLabel": "Les données sensibles",
+      "outsideItems": [
+        "Vos contrats",
+        "Vos rapports de R&D",
+        "Vos données clients, bancaires, clés secrètes..."
+      ],
+      "perimeterLabel": "Votre infrastructure",
+      "insideTitle": "Modèle open source/open weight",
+      "insideSubtitle": "Sur vos machines ou un serveur privé",
+      "cut": "Rien ne sort"
+    },
+    "pillars": {
+      "private": {
+        "index": "01",
+        "title": "IA privée & open source",
+        "lead": "J'installe des modèles d'IA open source sur VOS machines ou sur un serveur privé que vous possédez.",
+        "points": [
+          "Aucune donnée ne quitte votre infrastructure",
+          "Utilisation quasi illimitée, sans abonnement par utilisateur",
+          "Des modèles qui rivalisent avec ChatGPT et Claude sur vos cas d'usage",
+          "Et vos équipes formées pour s'en servir au quotidien"
+        ],
+        "proofLabel": "Sur le terrain",
+        "proof": "J'accompagne un médecin-chercheur : il mène ses travaux avec l'IA sans qu'aucune donnée de recherche ne parte chez un éditeur américain."
+      },
+      "geo": {
+        "index": "02",
+        "title": "GEO — être recommandé par les IA",
+        "lead": "Vos clients ne tapent plus dans Google, ils demandent à ChatGPT. Si l'IA ne cite pas votre entreprise, vous n'existez pas.",
+        "points": [
+          "Audit de votre site et de votre fiche Google Maps",
+          "Correctifs livrés, prêts à publier",
+          "Suivi de vos citations sur ChatGPT, Gemini et Perplexity"
+        ],
+        "proofLabel": "Sur le terrain",
+        "proof": "La Cotriade, restaurant de fruits de mer aux Sables-d'Olonne : invisible sur ChatGPT et Gemini, aujourd'hui cité en première position sur sa niche. J'ai codé GEOBoost pour industrialiser ce workflow."
+      },
+      "custom": {
+        "index": "03",
+        "title": "Sites & applications sur-mesure",
+        "lead": "Quand l'outil n'existe pas, je le construis. Next.js, TypeScript, Supabase, Flutter, WordPress.",
+        "points": [
+          "Bourbon Academy — site vitrine complet, livré avec la doc de la stack et un coffre de mots de passe",
+          "La Cotriade — refonte WordPress où le restaurateur gère son menu, ses horaires et son blog sans toucher au code"
+        ],
+        "proofLabel": "Ma règle",
+        "proof": "Je ne livre pas un outil que vous ne pouvez pas faire vivre sans moi."
+      }
+    },
+    "trackRecord": {
+      "label": "Aussi à mon actif",
+      "items": [
+        {
+          "name": "Nestor App",
+          "detail": "Co-fondée, utilisée chaque jour par les voituriers de 15+ restaurants parisiens, en production depuis 2 ans."
+        },
+        {
+          "name": "Kessel Media",
+          "detail": "Contribution à une plateforme de newsletters servant +500 000 utilisateurs."
+        }
+      ]
+    },
+    "cta": {
+      "text": "30 minutes suffisent pour savoir si on peut travailler ensemble. Je réponds sous 24h.",
+      "button": "Réserver un appel"
+    }
+  },
+  "content": {
+    "eyebrow": "Créateur de contenu IA & tech",
+    "mottoLabel": "Ma ligne",
+    "motto": "Je t'apprends ce que l'IA ne fait pas.",
+    "description": "Pendant que l'IA génère du code de plus en plus qualitatif, j'explique les fondamentaux qui font la différence entre un ingénieur qui comprend ce qu'il fait et qui se met sans arrêt à jour sur les nouveautés d'IA et de programmation, face à un entrepreneur qui sait comment prompter son IA. Nous sommes à l'air du multi-tâches, je me suis alors adapté pour élargir mon domaine de compétence, et le marketing prend une place de plus en plus importante dans les produits que je construis !",
+    "topicsLabel": "Au programme",
+    "topics": [
+      "Faire tourner un modèle d'IA sur son ordinateur/serveur privé (data privacy et souveraineté)",
+      "Les nouveautés IA etprogrammation",
+      "Les coulisses des projets tech que je livre"
+    ],
+    "stats": [
+      { "value": "6 000+", "label": "abonnés" },
+      { "value": "3", "label": "plateformes" },
+      { "value": "3/sem", "label": "publication" }
+    ],
+    "cards": {
+      "tiktok": {
+        "platform": "TikTok",
+        "handle": "@bobodigital_",
+        "href": "https://www.tiktok.com/@bobodigital_"
+      },
+      "instagram": {
+        "platform": "Instagram",
+        "handle": "@bobodigital_",
+        "href": "https://www.instagram.com/bobodigital_"
+      }
+    },
+    "youtubeCta": "Voir la chaîne YouTube",
+    "youtubeHref": "https://www.youtube.com/@bobo_digital"
+  },
   "creations": {
     "projects": {
+      "codeself": {
+        "name": "CodeSelf",
+        "role": "Apprendre à coder avec et sans l'IA",
+        "note": "Plateforme complète : parcours, forum, paiements et espace membre. Conçue, codée et lancée seul.",
+        "author": "Produit maison",
+        "authorRole": "Next.js · TypeScript · Supabase · Stripe"
+      },
       "kesselMedia": {
         "name": "Kessel Media",
         "testimonial": "Titouan a démontré sa capacité à apprendre et à travailler rapidement, contribuant ainsi à l'évolution rapide de la plateforme de Kessel !",
         "author": "Alexis Pibrac, CTO de Kessel Media",
-        "role": "Le YouTube de la Newsletter"
+        "role": "Le YouTube de la newsletter"
       },
       "pulseAI": {
         "name": "PulseAI",
-        "testimonial": "Super création du design de l'application en reprenant la web app que j'avais codé avec Lovable. Il nous a rendu un Figma bluffant avec un prototype intégré. Il a même repensé à optimisé le parcours et les écrans pour une meilleure expérience utilisateur.",
-        "author": "Bryan Saejis, Fondateur de Pulse AI",
+        "testimonial": "Il a repris la web app que j'avais codée avec Lovable et m'a rendu un Figma bluffant, prototype intégré. Il a même repensé le parcours et les écrans.",
+        "author": "Bryan Saejis, fondateur de Pulse AI",
         "role": "Coach nutrition IA"
       },
       "nestor": {
         "name": "Nestor",
         "testimonial": "J'ai parlé de mon idée d'app de voiturier à Titouan, et en quelques semaines il a développé un MVP fonctionnel qui a impressionné nos premiers clients !",
-        "author": "Samuel Doutriaux, Co-fondateur de Nestor",
+        "author": "Samuel Doutriaux, co-fondateur de Nestor",
         "role": "App voiturier"
       },
       "bourbonAcademy": {
         "name": "Bourbon Academy",
-        "testimonial": "J'ai contacté le @bobodigital_ pour créer une plateforme d'orientation scolaire, et il a livré un produit professionnel en 78h, en effectuant mes retours rapidement",
+        "testimonial": "J'ai contacté @bobodigital_ pour créer une plateforme d'orientation scolaire, et il a livré un produit professionnel en 78 h, en traitant mes retours rapidement.",
         "author": "Bourbon Academy",
         "role": "Orientation scolaire"
+      },
+      "laCotriade": {
+        "name": "La Cotriade",
+        "role": "Restaurant de fruits de mer, Les Sables-d'Olonne",
+        "note": "Refonte WordPress : le restaurateur gère son menu, ses horaires et son blog sans toucher au code. Invisible sur ChatGPT hier, cité en première position sur sa niche aujourd'hui.",
+        "author": "Refonte + GEO",
+        "authorRole": "WordPress · SCSS · GEO"
       },
       "weDive": {
         "name": "WeDive",
@@ -140,58 +272,59 @@
         "role": "Spots de plongée"
       }
     },
-    "viewProject": "Voir projet"
+    "viewProject": "Voir le projet",
+    "counter": "Projet"
   },
   "whyMe": {
     "premium": {
-      "badge": "Premium",
-      "title": "Construire avec le @bobodigital_",
+      "badge": "Avec moi",
+      "title": "Construire avec @bobodigital_",
       "items": {
-        "partnership": {
-          "title": "La question du temps ?",
-          "description": "C'est souvent la première question, et elle est cruciale. Ma réponse : on définit ensemble la structure et les fonctionnalités de votre produit, puis je consacre une journée à cadrer la stack technique, les outils et le processus de développement, avec une liste de tâches et un temps estimé pour chacune."
+        "scoping": {
+          "title": "Un cadrage chiffré avant la première ligne de code",
+          "description": "On définit ensemble les fonctionnalités, puis je consacre une journée à arrêter la stack, les outils et le découpage : une liste de tâches, un temps estimé pour chacune. Vous savez ce que vous payez et quand vous l'aurez."
         },
-        "fullCode": {
-          "title": "On construit bien, et on teste votre marché rapidement",
-          "description": "Autant poser de bonnes bases dès le départ, ça vous économise du temps et de l'argent. Je construis les fondations avec mes connaissances, puis j'utilise l'IA entraînée sur les bonnes pratiques pour aller vite sans sacrifier la qualité. On valide votre marché : si ça marche, on continue ; sinon, on pivote."
+        "sovereignty": {
+          "title": "Vos données restent chez vous",
+          "description": "Quand le sujet est sensible — contrats, R&D, données patients — j'installe un modèle open source sur votre infrastructure. Aucun prompt ne part chez un éditeur américain, et l'usage n'est pas facturé au siège."
         },
-        "excellence": {
+        "handover": {
+          "title": "Vous repartez avec les clés",
+          "description": "Documentation de la stack, coffre de mots de passe, et vos équipes formées à faire vivre l'outil. Ma règle : je ne livre pas un outil que vous ne pouvez pas faire vivre sans moi."
+        },
+        "product": {
           "title": "Un parcours utilisateur au cœur du projet",
-          "description": "Une fois les écrans et fonctionnalités définis ensemble, je construis des fondations solides et un design fonctionnel, en gardant l'objectif final en tête à chaque étape."
+          "description": "Écrans et fonctionnalités définis ensemble, fondations solides, design fonctionnel — avec l'objectif final en tête à chaque étape, pas seulement le ticket en cours."
         },
-        "marketing": {
-          "title": "Visibilité intégrée via le #BuildInPublic",
-          "description": "J'aide à acquérir vos premiers utilisateurs en donnant de la visibilité à votre projet sur mes réseaux, via des vidéos régulières qui dévoilent les coulisses de la construction: transparence, authenticité garanties et du temps de gagné pour vous sur les premiers tests de votre produit."
-        },
-        "innovation": {
-          "title": "Innovation continue",
-          "description": "Le projet ne s'arrête pas à la livraison. Je reste dans une logique d'amélioration constante, en intégrant les retours utilisateurs et les évolutions techniques pour que votre produit reste pertinent."
+        "visibility": {
+          "title": "Visibilité intégrée : réseaux + GEO",
+          "description": "Je donne de la visibilité à votre projet sur mes réseaux via des vidéos #BuildInPublic, et je travaille votre présence dans les réponses de ChatGPT et Gemini. Vos premiers utilisateurs arrivent avant la fin du chantier."
         }
       }
     },
     "classic": {
-      "badge": "Standard",
-      "title": "Construire avec un développeur freelance ou une agence",
+      "badge": "Ailleurs",
+      "title": "Construire avec un freelance ou une agence classique",
       "items": {
-        "generic": {
-          "title": "La question du temps ?",
-          "description": "Les coûts initiaux semblent attractifs, mais les ajustements et extensions reviennent souvent bien plus cher que prévu. Et les délais annoncés ? Rarement tenus."
+        "budget": {
+          "title": "Un devis attractif, une facture qui grossit",
+          "description": "Les coûts initiaux semblent bas, mais les ajustements et extensions reviennent souvent plus cher que le projet. Et les délais annoncés ? Rarement tenus."
         },
-        "templates": {
-          "title": "Dette technique",
-          "description": "Avec la mauvaise utilisation de l'IA, ce terme revient de plus en plus. Des solutions préfabriquées peuvent sembler rapides et bon marché, mais elles génèrent des problèmes de performance, de sécurité et de maintenabilité, et vous forcent à payer pour des corrections que vous n'aviez pas anticipées."
+        "dataLeak": {
+          "title": "Vos données passent par des outils tiers",
+          "description": "L'IA est utilisée en douce sur des comptes personnels, sur des serveurs que personne n'a validés. Vous l'apprenez au moment où ça pose un problème."
         },
-        "standardDev": {
-          "title": "Un UI/UX négligé qui rend votre produit inutile",
-          "description": "Il y a beaucoup de développeurs, mais peu avec une vraie vision produit, forgée à la fois par l'expérience en marketing et en développement."
+        "lockIn": {
+          "title": "Pas de doc, pas d'accès, pas d'autonomie",
+          "description": "Vous restez dépendant du prestataire pour changer un texte ou une photo. Chaque modification est un devis, et la reprise par quelqu'un d'autre coûte une refonte."
         },
-        "secondaryMarketing": {
-          "title": "Marketing secondaire",
-          "description": "Le SEO et la conversion sont traités comme des options additionnelles, plutôt qu'intégrés dès la conception."
+        "techDebt": {
+          "title": "Dette technique dès la livraison",
+          "description": "Avec la mauvaise utilisation de l'IA, ce terme revient de plus en plus : des bases préfabriquées, rapides et bon marché, qui génèrent des problèmes de performance, de sécurité et de maintenabilité."
         },
-        "limitedInnovation": {
-          "title": "Un parcours utilisateur laissé à l'abandon",
-          "description": "Les parcours utilisateurs sont souvent construits en parallèle du code, sans réelle attention à l'expérience. Résultat : un produit qui a coûté du temps et de l'argent, mais que personne n'utilise, et qu'il faudra reprendre de zéro."
+        "marketing": {
+          "title": "Marketing traité en option",
+          "description": "SEO, GEO et conversion sont vendus à part, après coup. Résultat : un produit qui a coûté du temps et de l'argent, mais que personne ne trouve."
         }
       }
     }

@@ -15,7 +15,7 @@ function PremiumColumn({ inView }: { inView: boolean }) {
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: 0.15 }}
-      className="relative rounded-2xl p-6 md:p-8 flex-1 overflow-hidden bg-surface"
+      className="relative flex-1 overflow-hidden rounded-2xl bg-surface p-6 md:p-8"
     >
       {/* Gradient border glow */}
       <div
@@ -41,19 +41,19 @@ function PremiumColumn({ inView }: { inView: boolean }) {
       {/* Content */}
       <div className="relative z-[1]">
         {/* Header */}
-        <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-8">
+        <div className="mb-6 flex items-center gap-3 md:mb-8">
           <Image
-            width={40}
-            height={40}
-            src="/titou.jpeg"
-            alt="bobo"
-            className="rounded-full border-accent border-2"
+            width={44}
+            height={44}
+            src="/titou-bio.jpg"
+            alt=""
+            className="size-11 rounded-full border-2 border-accent object-cover"
           />
           <div>
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-accent bg-accent/15 px-2 py-0.5 rounded-full">
+            <span className="label-mono rounded-full bg-accent/15 px-2 py-0.5 text-accent">
               {strings.whyMe.premium.badge}
             </span>
-            <h3 className="text-base md:text-lg font-bold text-accent mt-1">
+            <h3 className="mt-1.5 text-base font-bold text-accent md:text-lg">
               {strings.whyMe.premium.title}
             </h3>
           </div>
@@ -67,15 +67,15 @@ function PremiumColumn({ inView }: { inView: boolean }) {
               initial={{ opacity: 0, x: -20 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
-              className="py-5 border-b border-accent/10 last:border-b-0"
+              className="border-b border-accent/10 py-5 last:border-b-0 last:pb-0"
             >
               <div className="flex items-start gap-3">
-                <CheckCircleIcon className="size-5 text-accent shrink-0 mt-0.5" />
+                <CheckCircleIcon className="mt-0.5 size-5 shrink-0 text-accent" />
                 <div>
                   <p className="text-sm font-semibold text-base-content">
                     {item.title}
                   </p>
-                  <p className="mt-1 text-xs leading-relaxed text-base-content/70">
+                  <p className="mt-1.5 text-xs leading-relaxed text-foreground md:text-[13px]">
                     {item.description}
                   </p>
                 </div>
@@ -94,40 +94,45 @@ function ClassicColumn({ inView }: { inView: boolean }) {
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="rounded-2xl border border-neutral bg-surface/20 p-6 md:p-8 flex-1 opacity-40"
+      className="relative flex-1 overflow-hidden rounded-2xl border border-border bg-surface/40 p-6 md:p-8"
     >
+      <span
+        aria-hidden="true"
+        className="hatch pointer-events-none absolute inset-0 opacity-60"
+      />
+
       {/* Header */}
-      <div className="flex items-center gap-3 mb-8">
-        <div className="w-10 h-10 rounded-full bg-foreground/5 flex items-center justify-center">
-          <span className="text-foreground/40 text-lg">&#9632;</span>
+      <div className="relative mb-6 flex items-center gap-3 md:mb-8">
+        <div className="flex size-11 items-center justify-center rounded-full border border-border bg-background">
+          <MinusIcon className="size-5 text-foreground/30" />
         </div>
         <div>
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-foreground/50 bg-foreground/5 px-2 py-0.5 rounded-full">
+          <span className="label-mono rounded-full bg-foreground/5 px-2 py-0.5 text-foreground/50">
             {strings.whyMe.classic.badge}
           </span>
-          <h3 className="text-base md:text-lg font-bold text-base-content opacity-60 mt-1">
+          <h3 className="mt-1.5 text-base font-bold text-foreground/70 md:text-lg">
             {strings.whyMe.classic.title}
           </h3>
         </div>
       </div>
 
       {/* Items */}
-      <div className="space-y-0">
+      <div className="relative space-y-0">
         {classicItems.map((item, i) => (
           <motion.div
             key={item.title}
             initial={{ opacity: 0, x: 20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.4, delay: 0.4 + i * 0.1 }}
-            className="py-5 border-b border-neutral last:border-b-0"
+            className="border-b border-border py-5 last:border-b-0 last:pb-0"
           >
             <div className="flex items-start gap-3">
-              <MinusIcon className="size-5 text-foreground/30 shrink-0 mt-0.5" />
+              <MinusIcon className="mt-0.5 size-5 shrink-0 text-foreground/30" />
               <div>
-                <p className="text-sm font-semibold text-base-content/60 opacity-60">
+                <p className="text-sm font-semibold text-foreground/70">
                   {item.title}
                 </p>
-                <p className="mt-1 text-xs leading-relaxed text-foreground/50">
+                <p className="mt-1.5 text-xs leading-relaxed text-foreground/55 md:text-[13px]">
                   {item.description}
                 </p>
               </div>
@@ -145,7 +150,7 @@ export default function WhyMeSection() {
 
   return (
     <div ref={ref} className="px-4 md:px-0">
-      <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+      <div className="flex flex-col gap-4 md:flex-row md:gap-6">
         <PremiumColumn inView={inView} />
         <ClassicColumn inView={inView} />
       </div>

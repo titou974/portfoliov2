@@ -25,14 +25,14 @@ export default function Hero() {
       {/* Avatar */}
       <motion.div {...fadeUp(HERO_DELAYS.AVATAR)}>
         <Tooltip delay={500}>
-          <div className="w-fit p-2 rounded-full border-[0.5px] border-neutral mx-auto mt-6 md:mt-10">
-            <div className="w-fit border-[0.5px] border-neutral rounded-full p-1">
+          <div className="mx-auto mt-2 w-fit rounded-full border-[0.5px] border-border p-2 md:mt-6">
+            <div className="w-fit rounded-full border-[0.5px] border-border p-1">
               <Tooltip.Trigger
                 aria-label="Titouan Hirsch Avatar"
                 className="md:cursor-none"
               >
                 <Avatar className="size-20 md:size-24">
-                  <Avatar.Image alt="Titouan Hirsch" src="titou.jpeg" />
+                  <Avatar.Image alt="Titouan Hirsch" src="titou-bio.jpg" />
                 </Avatar>
               </Tooltip.Trigger>
             </div>
@@ -50,7 +50,7 @@ export default function Hero() {
           {...fadeUp(HERO_DELAYS.HEADING)}
           className="mb-10 mt-6 md:mt-10 mx-auto relative"
         >
-          <h1 className="font-semibold text-xl md:text-4xl leading-tight tracking-tighter text-base-content text-center text-muted before:absolute before:w-screen before:border-[0.5px] before:border-border before:inset-x-0 before:top-[-4] after:absolute after:w-screen after:border-[0.5px] after:border-border after:inset-x-0 after:bottom-[-6] after:left-1/2 after:-translate-x-1/2 after:opacity-60 before:opacity-60 before:-translate-x-1/2 before:-translate-y-1/2 before:top-1/2 before:left-1/2">
+          <h1 className="relative text-center text-xl leading-tight font-semibold tracking-tighter text-base-content md:text-4xl before:absolute before:inset-x-0 before:top-[-14px] before:left-1/2 before:w-screen before:-translate-x-1/2 before:border-[0.5px] before:border-border before:opacity-60 after:absolute after:inset-x-0 after:bottom-[-14px] after:left-1/2 after:w-screen after:-translate-x-1/2 after:border-[0.5px] after:border-border after:opacity-60">
             {t("hero.greeting")}
             <br />
             {t("hero.givesLife")}{" "}
@@ -61,7 +61,7 @@ export default function Hero() {
             />
             <br />
             {t("hero.andI")}{" "}
-            <span className="text-transparent bg-gradient-to-r from-muted via-accenta to-a  to-accent bg-clip-text">
+            <span className="bg-gradient-to-r from-base-content via-accent to-accent bg-clip-text text-transparent">
               {t("hero.helpsGrow")}
             </span>
           </h1>
@@ -83,7 +83,9 @@ export default function Hero() {
           </Button>
           <Button
             onClick={() => {
-              document.getElementById("problems")?.scrollIntoView({ behavior: "smooth" });
+              document
+                .getElementById("problems")
+                ?.scrollIntoView({ behavior: "smooth" });
             }}
             variant="secondary"
             className="w-60 md:w-auto bg-transparent hover:bg-accent hover:text-white border-accent border-2"
