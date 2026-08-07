@@ -13,7 +13,7 @@ export const BIO_CODESELF: BioLink = {
   icon: "/logos/codeself.svg",
   titleKey: "bio.codeself.title",
   subtitleKey: "bio.codeself.subtitle",
-  href: "https://code-self.com",
+  href: "https://coaching.code-self.com",
   variant: "codeself",
   badge: "bio.codeself.badge",
 };
