@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://titouanhirsch.com"),
   title: {
     default:
-      "Titouan Hirsch/ @bobodigital — Développeur Web Freelance & Créateur de contenu",
+      "Titouan Hirsch/ @bobodigital | Développeur web freelance, solutions IA sur mesure",
     template: "%s | Titouan Hirsch/@bobodigital",
   },
   description:

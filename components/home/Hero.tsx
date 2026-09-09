@@ -22,7 +22,6 @@ export default function Hero() {
 
   return (
     <>
-      {/* Avatar */}
       <motion.div {...fadeUp(HERO_DELAYS.AVATAR)}>
         <Tooltip delay={500}>
           <div className="mx-auto mt-2 w-fit rounded-full border-[0.5px] border-border p-2 md:mt-6">
