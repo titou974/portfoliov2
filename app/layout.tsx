@@ -79,6 +79,24 @@ export default function RootLayout({
       >
         <SecretButton />
         {children}
+        <nav
+          className="gtr-footer-links flex w-full basis-full flex-wrap justify-center gap-x-12 gap-y-6 p-6"
+          aria-label="Pages du site"
+        >
+          <div>
+            <p className="mb-2 font-semibold">À découvrir</p>
+            <ul className="m-0 list-none p-0">
+              <li className="my-1">
+                <a
+                  href="https://titouanhirsch.com/developpeur-application-mobile"
+                  className="text-inherit"
+                >
+                  Développeur application mobile
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </body>
     </html>
   );
