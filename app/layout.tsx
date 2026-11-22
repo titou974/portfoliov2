@@ -17,12 +17,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://titouanhirsch.com"),
   title: {
-    default:
-      "Titouan Hirsch/ @bobodigital | Développeur web freelance, solutions IA sur mesure",
+    default: "Titouan Hirsch | Développeur web freelance",
     template: "%s | Titouan Hirsch/@bobodigital",
   },
   description:
-    "Je donne vie à vos projets digitaux : MVP, applications web, agents IA et design sur-mesure. Je code ce que l'IA ne code pas.",
+    "Titouan Hirsch est développeur web freelance et crée des applications web, des MVP et des agents IA. Il code aussi ce que l'IA ne code pas.",
+  alternates: { canonical: "./" },
   keywords: [
     "développeur web freelance",
     "MVP",

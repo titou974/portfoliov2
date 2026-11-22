@@ -48,6 +48,8 @@
     "contact": "Contactez-moi"
   },
   "hero": {
+    "h1": "Titouan Hirsch, développeur web freelance",
+    "intro": "Titouan Hirsch est développeur web freelance et propose des solutions IA sur mesure. Il crée des applications web, des MVP, des agents IA et reprend aussi une app codée par l'IA pour la rendre fiable et maintenable.",
     "greeting": "Bienvenue ! Je suis Titouan/@bobodigital.",
     "givesLife": "Je donne vie à votre",
     "helpsGrow": "l'aide à Grandir.",
