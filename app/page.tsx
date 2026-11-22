@@ -10,15 +10,37 @@ import SovereigntySection from "@/components/home/SovereigntySection";
 import CreationsSection from "@/components/home/CreationsSection";
 import WhyMeSection from "@/components/home/WhyMeSection";
 import BookingSection from "@/components/home/BookingSection";
+import Faq from "@/components/home/Faq";
 import { MotionConfig } from "framer-motion";
 import { MouseProvider } from "@/lib/MouseContext";
 import { t } from "@/lib/strings";
+
+const HOME_JSON_LD = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Titouan Hirsch / @bobodigital",
+    url: "https://titouanhirsch.com",
+    description:
+      "Je donne vie à vos projets digitaux : MVP, applications web, agents IA et design sur-mesure. Je code ce que l'IA ne code pas.",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Titouan Hirsch / @bobodigital",
+    url: "https://titouanhirsch.com",
+  },
+];
 
 export default function Home() {
   return (
     // `reducedMotion="user"` : Framer Motion suit le réglage système, que la
     // règle CSS équivalente ne peut pas atteindre (animations pilotées en JS).
     <MotionConfig reducedMotion="user">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(HOME_JSON_LD) }}
+      />
       <MouseProvider>
         <PageContainer>
           <PageWrapper>
@@ -50,6 +72,7 @@ export default function Home() {
               <WhyMeSection />
             </SectionWrapper>
             <BookingSection />
+            <Faq />
           </PageWrapper>
         </PageContainer>
       </MouseProvider>

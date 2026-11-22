@@ -50,20 +50,29 @@ export default function Hero() {
           className="mb-10 mt-6 md:mt-10 mx-auto relative"
         >
           <h1 className="relative text-center text-xl leading-tight font-semibold tracking-tighter text-base-content md:text-4xl before:absolute before:inset-x-0 before:top-[-14px] before:left-1/2 before:w-screen before:-translate-x-1/2 before:border-[0.5px] before:border-border before:opacity-60 after:absolute after:inset-x-0 after:bottom-[-14px] after:left-1/2 after:w-screen after:-translate-x-1/2 after:border-[0.5px] after:border-border after:opacity-60">
-            {t("hero.greeting")}
-            <br />
+            {t("hero.h1")}
+          </h1>
+        </motion.div>
+
+        <motion.div {...fadeUp(HERO_DELAYS.PARAGRAPH)}>
+          <p className="mx-auto max-w-2xl text-center text-base text-base-content/80 md:text-lg">
+            {t("hero.intro")}
+          </p>
+          <p
+            aria-hidden="true"
+            className="mt-4 text-center text-lg font-semibold tracking-tighter md:text-2xl"
+          >
             {t("hero.givesLife")}{" "}
             <Typewriter
               words={TYPEWRITER_WORDS}
               started={typewriterStarted}
               className="text-accent"
-            />
-            <br />
+            />{" "}
             {t("hero.andI")}{" "}
             <span className="bg-gradient-to-r from-base-content via-accent to-accent bg-clip-text text-transparent">
               {t("hero.helpsGrow")}
             </span>
-          </h1>
+          </p>
         </motion.div>
 
         <motion.div
